@@ -117,7 +117,7 @@ typedef struct
 {
     /* The application's current state */
     APP_STATES state;
-
+    // This is a test!
     /* TODO: Define any additional data used by the application. */
     char currChar;
 
