@@ -60,6 +60,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // Section: Global Data Definitions
 // *****************************************************************************
 // *****************************************************************************
+DRV_HANDLE usartHandle1;
+
 
 // *****************************************************************************
 /* Application Data
@@ -84,8 +86,30 @@ APP_DATA appData;
 // *****************************************************************************
 // *****************************************************************************
 
-/* TODO:  Add any necessary callback funtions.
+/* TODO:  Add any necessary callback functions.
 */
+void usartEventHandler(DRV_USART_BUFFER_EVENT event, DRV_USART_BUFFER_HANDLE bufferHandle, uintptr_t contextHandle)
+{
+    switch(event)
+    {
+        case DRV_USART_BUFFER_EVENT_COMPLETE:
+            if(bufferHandle == appData.bufferHandleR)
+            {
+                
+            }
+            else if(bufferHandle == appData.bufferHandleW)
+            {
+                
+            }
+            break;
+        case DRV_USART_BUFFER_EVENT_ERROR:
+            //Error happened
+            break;
+        default:
+            break;
+    }
+}
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -95,27 +119,7 @@ APP_DATA appData;
 
 /* TODO:  Add any necessary local functions.
 */
-bool getChar()
-{
-    if (PLIB_USART_ReceiverDataIsAvailable(USART_ID_1))//There is data to receive )
-    {
-        appData.currChar = PLIB_USART_ReceiverByteReceive(USART_ID_1);
-        appData.state = APP_STATE_TRA;
-    }
-    
-    return 1;
-}
 
-bool putChar(char sent)
-{
-    if(PLIB_USART_TransmitterIsEmpty(USART_ID_1))//can transmit
-    {
-        PLIB_USART_TransmitterByteSend(USART_ID_1, sent);
-        appData.state = APP_STATE_REC;
-    }
-    
-    return 1;
-}
 
 // *****************************************************************************
 // *****************************************************************************
@@ -139,9 +143,14 @@ void APP_Initialize ( void )
     /* TODO: Initialize your application's state machine and other
      * parameters.
      */
-    PLIB_USART_Enable(USART_ID_1);
+    usartHandle1 = DRV_USART_Open(DRV_USART_INDEX_0, DRV_IO_INTENT_READWRITE);
+    if(DRV_HANDLE_INVALID == usartHandle1)
+    {
+        //ERRORS
+    }
+    
+    DRV_USART_BufferEventHandlerSet(usartHandle1, usartEventHandler, NULL);
 }
-
 
 /******************************************************************************
   Function:
@@ -159,23 +168,28 @@ void APP_Tasks ( void )
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
-            APP_Initialize();
-            appData.state = APP_STATE_REC;
-            break;
-        }
-        
-        /* TODO: implement your application state machine.*/
-        case APP_STATE_TRA:
-        {
-            putChar(appData.currChar);
-            break;
-        }
-        case APP_STATE_REC:
-        {
-            getChar();
+            appData.readBuffer[0] = 'a';
+            appData.readBuffer[1] = 'b';
+            appData.readBuffer[2] = 'a';
+            appData.readBuffer[3] = 'b';
+            appData.readBuffer[4] = 'a';
+            appData.readBuffer[5] = 'b';
+            DRV_USART_BufferAddRead(usartHandle1,&appData.bufferHandleR, appData.readBuffer, 1);
             break;
         }
 
+        /* TODO: implement your application state machine.*/
+        case APP_STATE_RECEIVE:
+        {
+            DRV_USART_BufferAddRead(usartHandle1,&appData.bufferHandleR, appData.readBuffer, 1);
+            break;
+        }
+        case APP_STATE_SEND:
+        {
+            DRV_USART_BufferAddWrite(usartHandle1,&appData.bufferHandleW, appData.writeBuffer, 1);
+            break;
+        }
+        
         /* The default state should never be executed. */
         default:
         {

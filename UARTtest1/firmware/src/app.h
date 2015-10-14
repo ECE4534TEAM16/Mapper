@@ -57,10 +57,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stddef.h>
 #include <stdlib.h>
 #include "system_config.h"
-#include "peripheral/usart/plib_usart.h"
-#include "peripheral/devcon/plib_devcon.h"
 #include "system_definitions.h"
-#include "system/debug/sys_debug.h"
 
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
@@ -93,10 +90,9 @@ typedef enum
 	APP_STATE_INIT=0,
 
 	/* TODO: Define states used by the application state machine. */
-            APP_STATE_TRA=1,
+            APP_STATE_RECEIVE=1,
+            APP_STATE_SEND=2
             
-            APP_STATE_REC=2
-
 } APP_STATES;
 
 
@@ -119,7 +115,11 @@ typedef struct
     APP_STATES state;
     // This is a test!
     /* TODO: Define any additional data used by the application. */
-    char currChar;
+    char readBuffer[100];
+    char writeBuffer[100];
+    
+    DRV_USART_BUFFER_HANDLE bufferHandleR;
+    DRV_USART_BUFFER_HANDLE bufferHandleW;
 
 } APP_DATA;
 
@@ -131,7 +131,7 @@ typedef struct
 // *****************************************************************************
 /* These routines are called by drivers when certain events occur.
 */
-
+void usartEventHandler(DRV_USART_BUFFER_EVENT event, DRV_USART_BUFFER_HANDLE bufferHandle, uintptr_t contextHandle);
 	
 // *****************************************************************************
 // *****************************************************************************
@@ -205,10 +205,6 @@ void APP_Initialize ( void );
 
 void APP_Tasks( void );
 
-//MY FUNCTIONS
-bool getChar();
-
-bool putChar(char sent);
 
 #endif /* _APP_H */
 

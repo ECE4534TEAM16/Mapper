@@ -84,12 +84,12 @@
       <Template>
         <Name>system_config.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>BDFA12CD33E809092CB2B7750AAFF233</Checksum>
+        <Checksum>855E68BC465CEA5BC1FABF64BA154625</Checksum>
       </Template>
       <Template>
         <Name>system_init.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>FBB259C5B726B382BECD92C93401AADD</Checksum>
+        <Checksum>7D783415C3F580110195CCDFD44D0157</Checksum>
       </Template>
       <Template>
         <Name>system_interrupt.c</Name>
@@ -99,7 +99,7 @@
       <Template>
         <Name>sys_ports_static.c</Name>
         <Path>Source Files/app/system_config/default/framework/system/ports/src</Path>
-        <Checksum>93766964B34AEDCBDDA9AF45E91B5D1A</Checksum>
+        <Checksum>BDAE280569ED20E52D0025190D1E4BA1</Checksum>
       </Template>
       <Template>
         <Name>sys_clk_static.h</Name>
