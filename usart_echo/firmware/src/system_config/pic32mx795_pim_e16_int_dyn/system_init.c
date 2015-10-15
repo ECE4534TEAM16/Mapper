@@ -17,6 +17,8 @@
 
 // DOM-IGNORE-BEGIN
 /*******************************************************************************
+Copyright (c) 2013-2015 released Microchip Technology Inc.  All rights reserved.
+
 Microchip licenses to you the right to use, modify, copy and distribute
 Software only when embedded on a Microchip microcontroller or digital signal
 controller that is integrated into your product or third party product
