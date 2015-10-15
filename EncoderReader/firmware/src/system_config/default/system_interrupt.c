@@ -71,24 +71,36 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // *****************************************************************************
 
+// * this handler is activated on the rising edge from the encoder. It sends a 
+// * dummy character to the message queue 'xQueue1'. Functionality is waiting in 
+// * AppTasks to listen for a character (any character) such that after 10
+// * characters are sent/received LED LD4, ChannelAPort3, will toggle.
+// * Note that the queue can only hold 50 characters and characters are only
+// * read 10 times per second at most.
 void IntHandlerExternalInterruptInstance0(void)
 {           
     char a = 'o';
     BaseType_t xHigherPriorityTaskWoken;
     xHigherPriorityTaskWoken = pdFALSE;
-    xQueueSendFromISR( xQueue1, &a, &xHigherPriorityTaskWoken );
-    PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+    BaseType_t returnStatus;
+    returnStatus = xQueueSendFromISR( xQueue1, &a, &xHigherPriorityTaskWoken );
+    //if( returnStatus == pdTRUE)
+    //    PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+    //else
+    //    PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
     PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_EXTERNAL_1);
     
 }
 
+// * At the moment, this handler exists and runs when one encoder signals, but
+// * does not actually interact with the rest of the code base
 void IntHandlerExternalInterruptInstance1(void)
 {           
-    char a = 'o';
-    BaseType_t xHigherPriorityTaskWoken;
-    xHigherPriorityTaskWoken = pdFALSE;
-    xQueueSendFromISR( xQueue1, &a, &xHigherPriorityTaskWoken );
-    PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+//    char a = 'o';
+//    BaseType_t xHigherPriorityTaskWoken;
+//    xHigherPriorityTaskWoken = pdFALSE;
+//    xQueueSendFromISR( xQueue1, &a, &xHigherPriorityTaskWoken );
+//    PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
     PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_EXTERNAL_2);
 
 }

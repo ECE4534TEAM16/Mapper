@@ -185,7 +185,7 @@
       <Template>
         <Name>system_tasks.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>0845AFA23ECE842283ADD49BE0AAFD82</Checksum>
+        <Checksum>ED4D1A9F1F724FD090C5B80FE404BE35</Checksum>
       </Template>
       <Template>
         <Name>FreeRTOSConfig.h</Name>
@@ -199,7 +199,7 @@
       <Template>
         <Name>system_init.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>F5416C70DA9577281A29EBF4C8949CB1</Checksum>
+        <Checksum>587B0FCD3FC89A7BD8DA62C04CF7EC14</Checksum>
       </Template>
       <Template>
         <Name>system_interrupt_a.S</Name>

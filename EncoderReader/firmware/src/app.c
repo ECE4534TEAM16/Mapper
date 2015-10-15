@@ -86,10 +86,10 @@ APP_DATA appData;
 
 /* TODO:  Add any necessary callback funtions.
 */
-void FlashLEDCallback( TimerHandle_t xTimer )
-{
-    PLIB_PORTS_PinToggle (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
-}
+//void FlashLEDCallback( TimerHandle_t xTimer )
+//{
+    //PLIB_PORTS_PinToggle (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+//}
 
 // *****************************************************************************
 // *****************************************************************************
@@ -115,32 +115,34 @@ void FlashLEDCallback( TimerHandle_t xTimer )
     See prototype in app.h.
  */
 
+// * 
 void APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
-
     appData.interruptCount = 0;
     
-    xQueue1 = xQueueCreate( 20, sizeof( char ) );
-    if( xQueue1 == 0 )
-    {
-        // Queue was not created and must not be used.
-    }
     PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
-    PLIB_PORTS_PinToggle (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+    PLIB_PORTS_PinClear (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
     
-    TimerHandle_t _50MsTimer = xTimerCreate
-    ( "50ms timer",
-      500/portTICK_PERIOD_MS,
-      pdTRUE,
-      (void *) 1,
-      FlashLEDCallback );
+    //TimerHandle_t _50MsTimer = xTimerCreate
+    //( "50ms timer",
+    //  500/portTICK_PERIOD_MS,
+    //  pdTRUE,
+    //  (void *) 1,
+    //  FlashLEDCallback );
             
     //PLIB_PORTS_PinSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
-    if( _50MsTimer != NULL )
+    //if( _50MsTimer != NULL )
+    //{
+    //    xTimerStart( _50MsTimer, 100 );
+    //}
+    
+    xQueue1 = xQueueCreate( 50, sizeof( char ) );
+    if( xQueue1 == 0 )
     {
-        xTimerStart( _50MsTimer, 100 );
+        //BAD
+        //PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
     }
         
     /* TODO: Initialize your application's state machine and other
@@ -157,6 +159,8 @@ void APP_Initialize ( void )
     See prototype in app.h.
  */
 
+// * the queue is declared in app.h, set up in APP_INITIALIZE. Once the program
+// * has read 10 entries from the queue it toggles LED LD4.
 void APP_Tasks ( void )
 {
     /* Check the application's current state. */
@@ -166,19 +170,25 @@ void APP_Tasks ( void )
         case APP_STATE_INIT:
         {
             char in;
-//            if(xQueueReceive( xQueue1, *in, 5))
-  //              appData.interruptCount = appData.interruptCount + 1;
-    //        if(appData.interruptCount > 100)
-      //          PLIB_PORTS_PinToggle (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
             if(xQueueReceive( xQueue1, &in, 5))
-                appData.state = APP_STATE_RUNNING;
+                appData.interruptCount = appData.interruptCount + 1;
+            if(appData.interruptCount > 10)
+            {
+                PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+                appData.interruptCount = 0;
+            }
+            //    PLIB_PORTS_PinToggle (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+            //if( uxQueueMessagesWaiting(xQueue1) )
+            //{
+                //appData.state = APP_STATE_RUNNING;
+                //PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+            //}
             break;
         }
         
         /* Application's running state. */
         case APP_STATE_RUNNING:
         {
-            PLIB_PORTS_PinSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
             break;
         }
         
