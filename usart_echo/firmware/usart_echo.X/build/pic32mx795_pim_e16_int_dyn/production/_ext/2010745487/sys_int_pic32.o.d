@@ -1,5 +1,6 @@
-build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o:  \
- ../src/system_config/pic32mx795_pim_e16_int_dyn/framework/system/ports/src/sys_ports_static.c  \
+build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o:  \
+ ../../../../../microchip/harmony/v1_06/framework/system/int/src/sys_int_pic32.c  \
+ ../../../../../microchip/harmony/v1_06/framework/system/int/sys_int.h  \
  ../src/system_config/pic32mx795_pim_e16_int_dyn/system_config.h  \
  ../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16/bsp_config.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/plib_ports.h  \
@@ -32,6 +33,8 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o:  
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/processor/../templates/ports_ChannelChangeNoticeMethod_Unsupported.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/processor/../templates/ports_ChangeNoticeEdgeControl_Unsupported.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/processor/../templates/ports_ChangeNoticeEdgeStatus_Unsupported.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/common/sys_common.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/common/sys_module.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/int/plib_int.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/int_processor.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/int_p32xxxx.h  \
@@ -51,4 +54,5 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o:  
  ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_EnableControl_PIC32.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ShadowRegisterAssign_Unsupported.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_VariableOffset_Unsupported.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SoftwareNMI_Unsupported.h 
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SoftwareNMI_Unsupported.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/int/sys_int_mapping.h 

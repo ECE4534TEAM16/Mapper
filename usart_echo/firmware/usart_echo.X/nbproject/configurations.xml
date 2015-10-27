@@ -40,30 +40,39 @@
       <logicalFolder name="f2" displayName="bsp" projectFiles="true">
         <logicalFolder name="f1" displayName="pic32mx795_pim+e16" projectFiles="true">
           <itemPath>../../../../../../bsp/pic32mx795_pim+e16/bsp_config.h</itemPath>
+          <itemPath>../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16/bsp_config.h</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">
           <logicalFolder name="f1" displayName="usart" projectFiles="true">
             <itemPath>../../../../../../framework/driver/usart/drv_usart.h</itemPath>
+            <itemPath>../../../../../microchip/harmony/v1_06/framework/driver/usart/drv_usart.h</itemPath>
           </logicalFolder>
           <itemPath>../../../../../../framework/driver/driver.h</itemPath>
+          <itemPath>../../../../../microchip/harmony/v1_06/framework/driver/driver.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f2" displayName="system" projectFiles="true">
           <logicalFolder name="f1" displayName="common" projectFiles="true">
             <itemPath>../../../../../../framework/system/common/sys_common.h</itemPath>
             <itemPath>../../../../../../framework/system/common/sys_module.h</itemPath>
+            <itemPath>../../../../../microchip/harmony/v1_06/framework/system/common/sys_common.h</itemPath>
+            <itemPath>../../../../../microchip/harmony/v1_06/framework/system/common/sys_module.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f2" displayName="devcon" projectFiles="true">
             <itemPath>../../../../../../framework/system/devcon/sys_devcon.h</itemPath>
+            <itemPath>../../../../../microchip/harmony/v1_06/framework/system/devcon/sys_devcon.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f3" displayName="int" projectFiles="true">
             <itemPath>../../../../../../framework/system/int/sys_int.h</itemPath>
+            <itemPath>../../../../../microchip/harmony/v1_06/framework/system/int/sys_int.h</itemPath>
           </logicalFolder>
           <logicalFolder name="f4" displayName="ports" projectFiles="true">
             <itemPath>../../../../../../framework/system/ports/sys_ports.h</itemPath>
+            <itemPath>../../../../../microchip/harmony/v1_06/framework/system/ports/sys_ports.h</itemPath>
           </logicalFolder>
           <itemPath>../../../../../../framework/system/system.h</itemPath>
+          <itemPath>../../../../../microchip/harmony/v1_06/framework/system/system.h</itemPath>
         </logicalFolder>
       </logicalFolder>
     </logicalFolder>
@@ -129,6 +138,7 @@
       <logicalFolder name="f2" displayName="bsp" projectFiles="true">
         <logicalFolder name="f1" displayName="pic32mx795_pim+e16" projectFiles="true">
           <itemPath>../../../../../../bsp/pic32mx795_pim+e16/bsp_sys_init.c</itemPath>
+          <itemPath>../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16/bsp_sys_init.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
@@ -138,7 +148,9 @@
               <logicalFolder name="f1" displayName="dynamic" projectFiles="true">
                 <itemPath>../../../../../../framework/driver/usart/src/dynamic/drv_usart.c</itemPath>
                 <itemPath>../../../../../../framework/driver/usart/src/dynamic/drv_usart_buffer_queue.c</itemPath>
-                <itemPath>../../../../../../framework/driver/usart/src/dynamic/drv_usart_read_write.c</itemPath>
+                <itemPath>../../../../../microchip/harmony/v1_06/framework/driver/usart/src/dynamic/drv_usart.c</itemPath>
+                <itemPath>../../../../../microchip/harmony/v1_06/framework/driver/usart/src/dynamic/drv_usart_buffer_queue.c</itemPath>
+                <itemPath>../../../../../microchip/harmony/v1_06/framework/driver/usart/src/dynamic/drv_usart_read_write.c</itemPath>
               </logicalFolder>
             </logicalFolder>
           </logicalFolder>
@@ -148,16 +160,20 @@
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../framework/system/devcon/src/sys_devcon.c</itemPath>
               <itemPath>../../../../../../framework/system/devcon/src/sys_devcon_pic32mx.c</itemPath>
+              <itemPath>../../../../../microchip/harmony/v1_06/framework/system/devcon/src/sys_devcon.c</itemPath>
+              <itemPath>../../../../../microchip/harmony/v1_06/framework/system/devcon/src/sys_devcon_pic32mx.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f2" displayName="int" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../framework/system/int/src/sys_int_pic32.c</itemPath>
+              <itemPath>../../../../../microchip/harmony/v1_06/framework/system/int/src/sys_int_pic32.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="f3" displayName="ports" projectFiles="true">
             <logicalFolder name="f1" displayName="src" projectFiles="true">
               <itemPath>../../../../../../framework/system/ports/src/sys_ports.c</itemPath>
+              <itemPath>../../../../../microchip/harmony/v1_06/framework/system/ports/src/sys_ports.c</itemPath>
             </logicalFolder>
           </logicalFolder>
         </logicalFolder>
@@ -180,7 +196,7 @@
     <Elem>../../../../../../framework/driver/nvm/src/dynamic</Elem>
     <Elem>../src/system_config/pic32mx795_pim_e16_int_dyn</Elem>
     <Elem>../src/system_config/pic32mx795_pim_e16_poll_dyn</Elem>
-    <Elem>../../../..</Elem>
+    <Elem>../../../microchip/harmony/v1_06</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -198,7 +214,7 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../../../../../bin/framework/peripheral/PIC32MX795F512L_peripherals.a</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../microchip/harmony/v1_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -219,7 +235,7 @@
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <item path="../../../../../../bsp/pic32mx795_pim+e16/bsp_config.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -235,7 +251,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../bsp/pic32mx795_pim+e16/bsp_sys_init.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -251,7 +267,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/driver/driver.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -267,7 +283,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/driver/usart/drv_usart.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -283,7 +299,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/driver/usart/src/dynamic/drv_usart.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -299,7 +315,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/driver/usart/src/dynamic/drv_usart_buffer_queue.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -315,7 +331,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/common/sys_common.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -331,7 +347,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/common/sys_module.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -347,7 +363,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/devcon/src/sys_devcon.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -363,7 +379,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/devcon/src/sys_devcon_pic32mx.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -379,7 +395,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/devcon/sys_devcon.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -395,7 +411,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/int/src/sys_int_pic32.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -411,7 +427,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/int/sys_int.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -427,7 +443,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/ports/src/sys_ports.c"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -443,7 +459,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/ports/sys_ports.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -459,7 +475,7 @@
         </C32Global>
       </item>
       <item path="../../../../../../framework/system/system.h"
-            ex="false"
+            ex="true"
             overriding="false">
         <C32>
         </C32>
@@ -626,7 +642,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="../src;../src/system_config;../src/system_config/pic32mx795_pim_e16_int_dyn;../../../../../../framework;../../../../../../framework/driver/usart;../../../../../../framework/driver;../../../../../../framework/system/clk;../../../../../../framework/system/clk/src;../../../../../../framework/system/common;../../../../../../framework/system/devcon;../../../../../../framework/system/int;../../../../../../framework/system;../src/system_config/pic32mx795_pim_e16_int_dyn/framework;../../../../../../bsp/pic32mx795_pim+e16"/>
+                  value="../src;../src/system_config;../src/system_config/pic32mx795_pim_e16_int_dyn;../../../../../../framework;../../../../../../framework/driver/usart;../../../../../../framework/driver;../../../../../../framework/system/clk;../../../../../../framework/system/clk/src;../../../../../../framework/system/common;../../../../../../framework/system/devcon;../../../../../../framework/system/int;../../../../../../framework/system;../src/system_config/pic32mx795_pim_e16_int_dyn/framework;../../../../../microchip/harmony/v1_06/framework;../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="true"/>
@@ -846,7 +862,71 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
-      <item path="../../../../../../framework/driver/usart/src/dynamic/drv_usart_read_write.c"
+      <item path="../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16/bsp_config.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16/bsp_sys_init.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/driver/driver.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/driver/usart/drv_usart.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/driver/usart/src/dynamic/drv_usart.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/driver/usart/src/dynamic/drv_usart_buffer_queue.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/driver/usart/src/dynamic/drv_usart_read_write.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/common/sys_common.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/common/sys_module.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/devcon/src/sys_devcon.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/devcon/src/sys_devcon_pic32mx.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/devcon/sys_devcon.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/int/src/sys_int_pic32.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/int/sys_int.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/ports/src/sys_ports.c"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/ports/sys_ports.h"
+            ex="true"
+            overriding="false">
+      </item>
+      <item path="../../../../../microchip/harmony/v1_06/framework/system/system.h"
             ex="true"
             overriding="false">
       </item>

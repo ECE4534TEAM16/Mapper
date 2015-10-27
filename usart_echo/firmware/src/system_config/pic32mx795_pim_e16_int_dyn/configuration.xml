@@ -26,7 +26,7 @@
     </Schemes>
   </Designer>
   <General>
-    <HarmonyPath path="../../../.."/>
+    <HarmonyPath path="../../../microchip/harmony/v1_06"/>
     <ForceOptimization flag="true"/>
   </General>
   <Manifest>
@@ -136,7 +136,7 @@
       <Template>
         <Name>system_config.h</Name>
         <Path>Header Files/app/system_config/pic32mx795_pim_e16_int_dyn</Path>
-        <Checksum>0044739F6886DD91EE250B31BF854FE1</Checksum>
+        <Checksum>C44608AD85B0860D1CD1D52935B2AD51</Checksum>
       </Template>
       <Template>
         <Name>sys_clk_static.c</Name>
@@ -161,11 +161,11 @@
     </Templates>
     <CompilerItems>
       <C32>
-        <Include value="../../../../../../bsp/pic32mx795_pim+e16"/>
+        <Include value="../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16"/>
       </C32>
     </CompilerItems>
     <Libraries>
-      <Library value="../../../../../../bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
+      <Library value="../../../../../microchip/harmony/v1_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
     </Libraries>
   </Manifest>
 </configuration>

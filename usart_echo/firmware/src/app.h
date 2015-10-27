@@ -68,7 +68,7 @@ extern SYS_MODULE_OBJ    usartModule;
 // *****************************************************************************
 // *****************************************************************************
 #define APP_NO_OF_BYTES_TO_READ 1
-#define APP_NUM_LINES           7
+#define APP_NUM_LINES           5
 #define APP_BUFFER_SIZE         60
 #define APP_UART_BAUDRATE       57600
 #define APP_USR_ESC_KEY         0x1B

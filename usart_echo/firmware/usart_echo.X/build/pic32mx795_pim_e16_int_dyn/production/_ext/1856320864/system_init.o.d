@@ -1,5 +1,5 @@
-build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o:  \
- ../src/system_config/pic32mx795_pim_e16_int_dyn/framework/system/clk/src/sys_clk_static.c  \
+build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o:  \
+ ../src/system_config/pic32mx795_pim_e16_int_dyn/system_init.c  \
  ../src/system_config/pic32mx795_pim_e16_int_dyn/system_config.h  \
  ../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16/bsp_config.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/plib_ports.h  \
@@ -36,6 +36,7 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o:  \
  ../../../../../microchip/harmony/v1_06/framework/system/common/sys_common.h  \
  ../../../../../microchip/harmony/v1_06/framework/system/common/sys_module.h  \
  ../../../../../microchip/harmony/v1_06/framework/system/clk/sys_clk.h  \
+ ../src/system_config/pic32mx795_pim_e16_int_dyn/system_config.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/plib_osc.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/processor/osc_processor.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/processor/osc_p32xxxx.h  \
@@ -189,4 +190,5 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o:  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/processor/../templates/dma_ChannelXCellProgressPointer_Default.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/processor/../templates/dma_ChannelXPatternData_Default.h  \
  ../../../../../microchip/harmony/v1_06/framework/system/ports/sys_ports.h  \
- ../src/app.h 
+ ../src/app.h  \
+ ../src/system_config/pic32mx795_pim_e16_int_dyn/system_definitions.h 

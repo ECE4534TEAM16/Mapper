@@ -51,11 +51,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 /* USART Driver Demo Banner Message */
 char appMsg[APP_NUM_LINES][APP_BUFFER_SIZE] = {
-        {"*******************************************************\r\n"},
-        {"Welcome to Microchip USART Driver Demo Application.\r\n"},
-        {"Press any character, the character will be echoed back.\r\n"},
-        {"Press 'ESC' key to exit the Demo Application.\r\n"},
-        {"*******************************************************\r\n"},
+        {"********************\r\n"},
+        {"* ROVERS CONNECTED *\r\n"},
+        {"********************\r\n"},
         {"\n"},
         {"\r\n\r\n****** End of USART Driver Demo Application. *****"},};
 

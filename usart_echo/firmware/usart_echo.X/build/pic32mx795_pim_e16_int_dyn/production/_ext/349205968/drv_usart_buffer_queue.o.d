@@ -1,5 +1,7 @@
-build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o:  \
- ../src/system_config/pic32mx795_pim_e16_int_dyn/framework/system/clk/src/sys_clk_static.c  \
+build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o:  \
+ ../../../../../microchip/harmony/v1_06/framework/driver/usart/src/dynamic/drv_usart_buffer_queue.c  \
+ ../../../../../microchip/harmony/v1_06/framework/driver/usart/src/drv_usart_local.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/clk/sys_clk.h  \
  ../src/system_config/pic32mx795_pim_e16_int_dyn/system_config.h  \
  ../../../../../microchip/harmony/v1_06/bsp/pic32mx795_pim+e16/bsp_config.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/plib_ports.h  \
@@ -32,10 +34,8 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o:  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/processor/../templates/ports_ChannelChangeNoticeMethod_Unsupported.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/processor/../templates/ports_ChangeNoticeEdgeControl_Unsupported.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/ports/processor/../templates/ports_ChangeNoticeEdgeStatus_Unsupported.h  \
- ../src/system_config/pic32mx795_pim_e16_int_dyn/system_definitions.h  \
- ../../../../../microchip/harmony/v1_06/framework/system/common/sys_common.h  \
  ../../../../../microchip/harmony/v1_06/framework/system/common/sys_module.h  \
- ../../../../../microchip/harmony/v1_06/framework/system/clk/sys_clk.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/common/sys_common.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/plib_osc.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/processor/osc_processor.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/processor/osc_p32xxxx.h  \
@@ -75,31 +75,6 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o:  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/processor/../templates/osc_SlewEnableControl_Unsupported.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/processor/../templates/osc_SlewDivisorStepControl_Unsupported.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/osc/processor/../templates/osc_SystemClockDivisorControl_Unsupported.h  \
- ../src/system_config/pic32mx795_pim_e16_int_dyn/framework/system/clk/sys_clk_static.h  \
- ../../../../../microchip/harmony/v1_06/framework/system/devcon/sys_devcon.h  \
- ../../../../../microchip/harmony/v1_06/framework/system/system.h  \
- ../../../../../microchip/harmony/v1_06/framework/system/int/sys_int.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/plib_int.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/int_processor.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/int_p32xxxx.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/plib_int_private_pic32.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/int_p32mx795f512l.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SingleVectorShadowSet_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_VectorSelect_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ProximityTimerEnable_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ProximityTimerControl_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ExternalINTEdgeSelect_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_INTCPUPriority_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_INTCPUVector_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SourceFlag_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SourceControl_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_VectorPriority_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_CPUCurrentPriorityLevel_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_EnableControl_PIC32.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ShadowRegisterAssign_Unsupported.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_VariableOffset_Unsupported.h  \
- ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SoftwareNMI_Unsupported.h  \
- ../../../../../microchip/harmony/v1_06/framework/system/int/sys_int_mapping.h  \
  ../../../../../microchip/harmony/v1_06/framework/driver/usart/drv_usart.h  \
  ../../../../../microchip/harmony/v1_06/framework/driver/driver_common.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/usart/plib_usart.h  \
@@ -139,6 +114,29 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o:  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/usart/processor/../templates/usart_TransmitterEnableControl_Default.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/usart/processor/../templates/usart_TransmitterInterruptMode_Default.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/usart/processor/../templates/usart_TransmitterIdleIsLow_pic32.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/system.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/int/sys_int.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/plib_int.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/int_processor.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/int_p32xxxx.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/plib_int_private_pic32.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/int_p32mx795f512l.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SingleVectorShadowSet_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_VectorSelect_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ProximityTimerEnable_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ProximityTimerControl_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ExternalINTEdgeSelect_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_INTCPUPriority_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_INTCPUVector_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SourceFlag_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SourceControl_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_VectorPriority_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_CPUCurrentPriorityLevel_Default.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_EnableControl_PIC32.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_ShadowRegisterAssign_Unsupported.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_VariableOffset_Unsupported.h  \
+ ../../../../../microchip/harmony/v1_06/framework/peripheral/int/processor/../templates/int_SoftwareNMI_Unsupported.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/int/sys_int_mapping.h  \
  ../../../../../microchip/harmony/v1_06/framework/system/dma/sys_dma.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/plib_dma.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/processor/dma_processor.h  \
@@ -188,5 +186,8 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o:  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/processor/../templates/dma_ChannelXCellSize_Default.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/processor/../templates/dma_ChannelXCellProgressPointer_Default.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/processor/../templates/dma_ChannelXPatternData_Default.h  \
- ../../../../../microchip/harmony/v1_06/framework/system/ports/sys_ports.h  \
- ../src/app.h 
+ ../../../../../microchip/harmony/v1_06/framework/driver/usart/src/drv_usart_variant_mapping.h  \
+ ../../../../../microchip/harmony/v1_06/framework/osal/osal.h  \
+ ../../../../../microchip/harmony/v1_06/framework/osal/osal_definitions.h  \
+ ../../../../../microchip/harmony/v1_06/framework/osal/src/osal_impl_basic.h  \
+ ../../../../../microchip/harmony/v1_06/framework/system/debug/sys_debug.h 
