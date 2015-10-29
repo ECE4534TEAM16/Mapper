@@ -48,6 +48,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 #include "system_definitions.h"
 #include "system_config.h"
 #include "system/system.h"
@@ -59,7 +60,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // *****************************************************************************
 // Section: Type Definitions
 // *****************************************************************************
-// *************************************************;jgbpynfgobyfgl****************************
+// *****************************************************************************
 extern SYS_MODULE_OBJ    usartModule;
 
 // *****************************************************************************
@@ -69,7 +70,7 @@ extern SYS_MODULE_OBJ    usartModule;
 // *****************************************************************************
 #define APP_NO_OF_BYTES_TO_READ 1
 #define APP_NUM_LINES           5
-#define APP_BUFFER_SIZE         60
+#define APP_BUFFER_SIZE         80
 #define APP_UART_BAUDRATE       57600
 #define APP_USR_ESC_KEY         0x1B
 #define APP_USR_RETURN_KEY      0x0D

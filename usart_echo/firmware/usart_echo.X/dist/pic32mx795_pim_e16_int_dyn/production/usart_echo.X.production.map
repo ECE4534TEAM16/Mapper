@@ -122,11 +122,14 @@ c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/
                               build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o (strcpy)
 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
                               c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(vector0.o) (_DefaultInterrupt)
+c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
+                              build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o (strcat)
 
 Allocating common symbols
 Common symbol       size              file
 
-appData             0x60              build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+temp                0x50              build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+appData             0x74              build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
 gDrvUSARTBufferObj  0x1680            build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
 sysObj              0x8               build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
 gDrvUSARTCommonDataObj
@@ -141,57 +144,58 @@ kseg0 Program-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
 .text._DRV_USART_Hardwa 0x9d000000          0xa78        2680   
-.text.APP_Tasks         0x9d000a78          0x488        1160   
-.text.DRV_USART_BufferA 0x9d000f00          0x340         832   
-.text.DRV_USART_Initial 0x9d001240          0x320         800   
-.text._DRV_USART_Buffer 0x9d001560          0x274         628   
-.text.DRV_USART_BufferA 0x9d0017d4          0x274         628   
-.text._DRV_USART_Buffer 0x9d001a48          0x25c         604   
-.text._DRV_USART_Client 0x9d001ca4          0x218         536   
-.text.DRV_USART_TasksEr 0x9d001ebc          0x1f4         500   
-.dinit                  0x9d0020b0          0x1d0         464   
-.text                   0x9d002280          0x1a0         416  App's exec code 
-.text.DRV_USART_Deiniti 0x9d002420          0x174         372   
-.text                   0x9d002594          0x168         360  App's exec code 
-.text._IntHandlerDrvUsa 0x9d0026fc          0x14c         332   
-.text.DRV_USART_Open    0x9d002848          0x12c         300   
-.text.App_GetNextTaskSt 0x9d002974          0x128         296   
-.text.SYS_DEVCON_Perfor 0x9d002a9c           0xdc         220   
-.rodata                 0x9d002b78           0xdc         220  Read-only const 
-.text.general_exception 0x9d002c54           0xdc         220   
-.text.APP_BufferEventHa 0x9d002d30           0xb8         184   
-.text.DRV_USART_TasksTr 0x9d002de8           0xb4         180   
-.text.DRV_USART_TasksRe 0x9d002e9c           0xb4         180   
-.text.SYS_Initialize    0x9d002f50           0xb0         176   
-.text.SYS_PORTS_Initial 0x9d003000           0x68         104   
-.text.DRV_USART_Close   0x9d003068           0x60          96   
-.text.SYS_DEVCON_System 0x9d0030c8           0x58          88   
-.text.SYS_INT_SourceDis 0x9d003120           0x58          88   
-.text.SYS_CLK_Initializ 0x9d003178           0x58          88   
-.text.main_entry        0x9d0031d0           0x54          84   
-.text.BSP_Initialize    0x9d003224           0x50          80   
-.rodata                 0x9d003274           0x4c          76  Read-only const 
-.text.SYS_DEVCON_System 0x9d0032c0           0x48          72   
-.text._bootstrap_except 0x9d003308           0x48          72   
-.vector_default         0x9d003350           0x48          72   
-.text                   0x9d003398           0x44          68  App's exec code 
-.text.APP_Initialize    0x9d0033dc           0x40          64   
-.text._general_exceptio 0x9d00341c           0x40          64   
-.text.DRV_USART_BufferE 0x9d00345c           0x2c          44   
-.text.DRV_USART_ClientS 0x9d003488           0x28          40   
-.text._DRV_USART_Driver 0x9d0034b0           0x28          40   
-.text.SYS_Tasks         0x9d0034d8           0x24          36   
-.text.main              0x9d0034fc           0x20          32   
-.text.SYS_DEVCON_JTAGDi 0x9d00351c           0x1c          28   
-.text.BSP_LEDOn         0x9d003538           0x1c          28   
-.text.SYS_INT_Initializ 0x9d003554           0x18          24   
-.text                   0x9d00356c           0x18          24  App's exec code 
-.text.SYS_DEVCON_Initia 0x9d003584           0x14          20   
-.text.SYS_CLK_SystemFre 0x9d003598            0xc          12   
-.text.SYS_DEVCON_Tasks  0x9d0035a4            0x8           8   
-.text._on_reset         0x9d0035ac            0x8           8   
-.text._on_bootstrap     0x9d0035b4            0x8           8   
-      Total kseg0_program_mem used  :      0x35bc       13756  2.6% of 0x80000
+.text.APP_Tasks         0x9d000a78          0x4cc        1228   
+.text.DRV_USART_BufferA 0x9d000f44          0x340         832   
+.text.DRV_USART_Initial 0x9d001284          0x320         800   
+.text._DRV_USART_Buffer 0x9d0015a4          0x274         628   
+.text.DRV_USART_BufferA 0x9d001818          0x274         628   
+.text._DRV_USART_Buffer 0x9d001a8c          0x25c         604   
+.dinit                  0x9d001ce8          0x250         592   
+.text._DRV_USART_Client 0x9d001f38          0x218         536   
+.text.DRV_USART_TasksEr 0x9d002150          0x1f4         500   
+.text                   0x9d002344          0x1a0         416  App's exec code 
+.text.DRV_USART_Deiniti 0x9d0024e4          0x174         372   
+.text                   0x9d002658          0x168         360  App's exec code 
+.text._IntHandlerDrvUsa 0x9d0027c0          0x14c         332   
+.text.DRV_USART_Open    0x9d00290c          0x12c         300   
+.text.App_GetNextTaskSt 0x9d002a38          0x128         296   
+.rodata                 0x9d002b60           0xdc         220  Read-only const 
+.text.SYS_DEVCON_Perfor 0x9d002c3c           0xdc         220   
+.text.general_exception 0x9d002d18           0xdc         220   
+.text.APP_BufferEventHa 0x9d002df4           0xb8         184   
+.text.DRV_USART_TasksTr 0x9d002eac           0xb4         180   
+.text.DRV_USART_TasksRe 0x9d002f60           0xb4         180   
+.text.SYS_Initialize    0x9d003014           0xb0         176   
+.text.SYS_PORTS_Initial 0x9d0030c4           0x68         104   
+.text.DRV_USART_Close   0x9d00312c           0x60          96   
+.text.SYS_CLK_Initializ 0x9d00318c           0x58          88   
+.text.SYS_DEVCON_System 0x9d0031e4           0x58          88   
+.text.SYS_INT_SourceDis 0x9d00323c           0x58          88   
+.text.main_entry        0x9d003294           0x54          84   
+.text.BSP_Initialize    0x9d0032e8           0x50          80   
+.rodata                 0x9d003338           0x4c          76  Read-only const 
+.text.SYS_DEVCON_System 0x9d003384           0x48          72   
+.text._bootstrap_except 0x9d0033cc           0x48          72   
+.vector_default         0x9d003414           0x48          72   
+.text                   0x9d00345c           0x44          68  App's exec code 
+.text.strcat            0x9d0034a0           0x44          68   
+.text._general_exceptio 0x9d0034e4           0x40          64   
+.text.APP_Initialize    0x9d003524           0x40          64   
+.text.DRV_USART_BufferE 0x9d003564           0x2c          44   
+.text.DRV_USART_ClientS 0x9d003590           0x28          40   
+.text._DRV_USART_Driver 0x9d0035b8           0x28          40   
+.text.SYS_Tasks         0x9d0035e0           0x24          36   
+.text.main              0x9d003604           0x20          32   
+.text.BSP_LEDOn         0x9d003624           0x1c          28   
+.text.SYS_DEVCON_JTAGDi 0x9d003640           0x1c          28   
+.text.SYS_INT_Initializ 0x9d00365c           0x18          24   
+.text                   0x9d003674           0x18          24  App's exec code 
+.text.SYS_DEVCON_Initia 0x9d00368c           0x14          20   
+.text.SYS_CLK_SystemFre 0x9d0036a0            0xc          12   
+.text.SYS_DEVCON_Tasks  0x9d0036ac            0x8           8   
+.text._on_reset         0x9d0036b4            0x8           8   
+.text._on_bootstrap     0x9d0036bc            0x8           8   
+      Total kseg0_program_mem used  :      0x36c4       14020  2.7% of 0x80000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -263,7 +267,7 @@ section                    address  length [bytes]      (dec)  Description
 .bev_excpt              0xbfc00380           0x10          16  BEV-Exception 
          Total kseg1_boot_mem used  :       0x204         516  44.2% of 0x490
         --------------------------------------------------------------------------
-         Total Program Memory used  :      0x3970       14704  2.8% of 0x81e00
+         Total Program Memory used  :      0x3a78       14968  2.8% of 0x81e00
         --------------------------------------------------------------------------
 
 
@@ -271,19 +275,19 @@ kseg1 Data-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
 .sbss                   0xa0000000           0x24          36  Small uninit data 
-.bss                    0xa0000024         0x1778        6008  Uninitialized data 
-.data                   0xa000179c          0x178         376  Initialized data 
-         Total kseg1_data_mem used  :      0x1914        6420  4.9% of 0x20000
+.bss                    0xa0000024         0x17dc        6108  Uninitialized data 
+.data                   0xa0001800          0x1f4         500  Initialized data 
+         Total kseg1_data_mem used  :      0x19f4        6644  5.1% of 0x20000
         --------------------------------------------------------------------------
-            Total Data Memory used  :      0x1914        6420  4.9% of 0x20000
+            Total Data Memory used  :      0x19f4        6644  5.1% of 0x20000
         --------------------------------------------------------------------------
 
 
 Dynamic Data-Memory Reservation
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-heap                    0xa0001918              0           0  Reserved for heap 
-stack                   0xa0001930        0x1e6c0      124608  Reserved for stack 
+heap                    0xa00019f8              0           0  Reserved for heap 
+stack                   0xa0001a10        0x1e5e0      124384  Reserved for stack 
 
         --------------------------------------------------------------------------
 
@@ -296,6 +300,33 @@ Discarded input sections
  .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
  .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
  .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
+ .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .text.SYS_CLK_PeripheralFrequencyGet
+                0x00000000        0xc build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .text.SYS_CLK_ReferenceClockFrequencyGet
+                0x00000000        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
  .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
  .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
  .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
@@ -303,6 +334,26 @@ Discarded input sections
  .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
  .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
  .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .text.BSP_LEDStateSet
+                0x00000000       0x34 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .text.BSP_LEDOff
+                0x00000000       0x1c build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .text.BSP_LEDStateGet
+                0x00000000       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .text.BSP_LEDToggle
+                0x00000000       0x1c build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .text.BSP_SwitchStateGet
+                0x00000000       0x38 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .text.BSP_SwitchS5Select
+                0x00000000       0x34 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .text.BSP_USBVBUSPowerEnable
+                0x00000000        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .text.BSP_USBVBUSSwitchOverCurrentDetect
+                0x00000000        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
  .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
  .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
  .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
@@ -425,53 +476,6 @@ Discarded input sections
                 0x00000000       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
  .text.SYS_PORTS_RemapOutput
                 0x00000000       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text.BSP_LEDStateSet
-                0x00000000       0x34 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text.BSP_LEDOff
-                0x00000000       0x1c build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text.BSP_LEDStateGet
-                0x00000000       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text.BSP_LEDToggle
-                0x00000000       0x1c build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text.BSP_SwitchStateGet
-                0x00000000       0x38 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text.BSP_SwitchS5Select
-                0x00000000       0x34 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text.BSP_USBVBUSPowerEnable
-                0x00000000        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text.BSP_USBVBUSSwitchOverCurrentDetect
-                0x00000000        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .text.SYS_CLK_PeripheralFrequencyGet
-                0x00000000        0xc build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .text.SYS_CLK_ReferenceClockFrequencyGet
-                0x00000000        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .text          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
- .data          0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
- .bss           0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
- .reginfo       0x00000000       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
  .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX795F512L\default_isr_vectors.o
  .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX795F512L\default_isr_vectors.o
  .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX795F512L\default_isr_vectors.o
@@ -717,6 +721,10 @@ Discarded input sections
  .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
  .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
  .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .text          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
+ .data          0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
+ .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
 Memory Configuration
 
@@ -739,8 +747,15 @@ Linker script and memory map
 
 LOAD c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX795F512L/crt0_mips32r2.o
 LOAD c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\debug-exception-return.o
+LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
 LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
 LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
 LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
 LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
 LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
@@ -748,13 +763,6 @@ LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
 LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
 LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
 LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
-LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
-LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
-LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
-LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
-LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
-LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
-LOAD build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
 LOAD ..\..\..\..\..\microchip\harmony\v1_06\bin\framework\peripheral\PIC32MX795F512L_peripherals.a
                 0x00000001                __MPLAB_BUILD = 0x1
                 0x00000000                _min_heap_size = 0x0
@@ -1322,34 +1330,35 @@ END GROUP
                 0xa0000000                _sbss_begin = .
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0xa0000000        0x2 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- *fill*         0xa0000002        0x2 
- .sbss          0xa0000004        0xc build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .sbss          0xa0000000        0xc build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .sbss          0xa000000c        0x2 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
  *(.scommon)
- .scommon       0xa0000010        0x3 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0xa0000010                gDrvUSARTCommonDataObj
- *fill*         0xa0000013        0x1 
- .scommon       0xa0000014        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
-                0xa0000014                sysDevconObj
- .scommon       0xa000001c        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
-                0xa000001c                sysObj
+ *fill*         0xa000000e        0x2 
+ .scommon       0xa0000010        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+                0xa0000010                sysObj
+ .scommon       0xa0000018        0x3 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0xa0000018                gDrvUSARTCommonDataObj
+ *fill*         0xa000001b        0x1 
+ .scommon       0xa000001c        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+                0xa000001c                sysDevconObj
                 0xa0000024                _sbss_end = .
                 0xa0000024                . = ALIGN (0x4)
 
-.bss            0xa0000024     0x1778
+.bss            0xa0000024     0x17dc
  *(.dynbss)
  *(COMMON)
- COMMON         0xa0000024       0x60 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
-                0xa0000024                appData
- COMMON         0xa0000084       0x98 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0xa0000084                gDrvUSARTClientObj
-                0xa00000c8                gDrvUSARTObj
- COMMON         0xa000011c     0x1680 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
-                0xa000011c                gDrvUSARTBufferObj
-                0xa000179c                . = ALIGN ((. != 0x0)?0x4:0x1)
-                0xa000179c                . = ALIGN (0x4)
-                0xa000179c                _end = .
-                0xa000179c                _bss_end = .
+ COMMON         0xa0000024       0xc4 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+                0xa0000024                temp
+                0xa0000074                appData
+ COMMON         0xa00000e8       0x98 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0xa00000e8                gDrvUSARTClientObj
+                0xa000012c                gDrvUSARTObj
+ COMMON         0xa0000180     0x1680 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+                0xa0000180                gDrvUSARTBufferObj
+                0xa0001800                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0xa0001800                . = ALIGN (0x4)
+                0xa0001800                _end = .
+                0xa0001800                _bss_end = .
                 0x00020000                _bmxdudba_address = 0x20000
                 0x00020000                _bmxdupba_address = 0x20000
 
@@ -1370,28 +1379,29 @@ END GROUP
  *(.gptab.bss)
  *(.gptab.sbss)
 
-.mdebug.abi32   0xa000179c        0x0
+.mdebug.abi32   0xa0001800        0x0
  *(.mdebug.abi32)
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .mdebug.abi32  0xa000179c        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
- .mdebug.abi32  0xa000179c        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .mdebug.abi32  0xa000179c        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .mdebug.abi32  0xa000179c        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .mdebug.abi32  0xa000179c        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+ .mdebug.abi32  0xa0001800        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
+ .mdebug.abi32  0xa0001800        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .mdebug.abi32  0xa0001800        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .mdebug.abi32  0xa0001800        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .mdebug.abi32  0xa0001800        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .mdebug.abi32  0xa0001800        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
 .mdebug.abiN32
  *(.mdebug.abiN32)
@@ -1434,9 +1444,16 @@ END GROUP
 
 .comment        0x00000000       0x6e
  *(.comment)
- .comment       0x00000000       0x3c build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .comment       0x00000000       0x3c build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
                                  0x3d (size before relaxing)
+ .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
  .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
  .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
  .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
  .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
@@ -1444,13 +1461,6 @@ END GROUP
  .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
  .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
  .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .comment       0x00000000       0x3d build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
  .comment       0x0000003c       0x19 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(strlen.o)
                                  0x1a (size before relaxing)
  .comment       0x00000000       0x3d c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
@@ -1459,6 +1469,7 @@ END GROUP
  .comment       0x00000055       0x19 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(strcpy.o)
                                  0x1a (size before relaxing)
  .comment       0x00000000       0x3d c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .comment       0x00000000       0x3d c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
 .debug
  *(.debug)
@@ -1472,40 +1483,40 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x4f8
+.debug_aranges  0x00000000      0x518
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x38 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+                0x00000000       0x38 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
  .debug_aranges
-                0x00000038       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+                0x00000038       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
  .debug_aranges
-                0x00000058       0xa8 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x00000058       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
  .debug_aranges
-                0x00000100       0x38 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+                0x00000078       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
  .debug_aranges
-                0x00000138       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+                0x00000098       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
  .debug_aranges
-                0x00000160       0x78 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+                0x000000b8       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
  .debug_aranges
-                0x000001d8       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+                0x000000d8       0x38 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
  .debug_aranges
-                0x000001f8       0x48 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+                0x00000110       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
  .debug_aranges
-                0x00000240       0xf8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
+                0x00000130       0x68 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
  .debug_aranges
-                0x00000338       0x68 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+                0x00000198       0xa8 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
  .debug_aranges
-                0x000003a0       0x38 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+                0x00000240       0x38 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
  .debug_aranges
-                0x000003d8       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+                0x00000278       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
  .debug_aranges
-                0x000003f8       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+                0x000002a0       0x78 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
  .debug_aranges
-                0x00000418       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+                0x00000318       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
  .debug_aranges
-                0x00000438       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+                0x00000338       0x48 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
  .debug_aranges
-                0x00000458       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+                0x00000380       0xf8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
  .debug_aranges
                 0x00000478       0x20 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .debug_aranges
@@ -1514,138 +1525,145 @@ END GROUP
                 0x000004b8       0x20 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .debug_aranges
                 0x000004d8       0x20 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_aranges
+                0x000004f8       0x20 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x1ca5f
+.debug_info     0x00000000    0x1cbe4
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000     0x1512 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
- .debug_info    0x00001512      0x7c9 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
- .debug_info    0x00001cdb     0x6828 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
- .debug_info    0x00008503     0x2923 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- .debug_info    0x0000ae26     0x307a build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
- .debug_info    0x0000dea0     0x13ab build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
- .debug_info    0x0000f24b      0xf53 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
- .debug_info    0x0001019e     0x17ba build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
- .debug_info    0x00011958     0x324a build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .debug_info    0x00014ba2     0x13ae build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .debug_info    0x00015f50     0x112a build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .debug_info    0x0001707a     0x10bb build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .debug_info    0x00018135     0x297c build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .debug_info    0x0001aab1      0x8d1 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .debug_info    0x0001b382      0xb31 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .debug_info    0x0001beb3      0x870 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
- .debug_info    0x0001c723       0xe3 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_info    0x0001c806       0xbd c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_info    0x0001c8c3       0xc5 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_info    0x0001c988       0xd7 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_info    0x00000000     0x112a build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .debug_info    0x0000112a     0x10bb build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .debug_info    0x000021e5     0x297c build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .debug_info    0x00004b61      0x8d1 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .debug_info    0x00005432      0xb31 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .debug_info    0x00005f63      0x870 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_info    0x000067d3     0x15e1 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .debug_info    0x00007db4      0x7c9 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .debug_info    0x0000857d     0x13ae build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .debug_info    0x0000992b     0x6828 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+ .debug_info    0x00010153     0x2923 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+ .debug_info    0x00012a76     0x307a build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+ .debug_info    0x00015af0     0x13ab build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+ .debug_info    0x00016e9b      0xf53 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+ .debug_info    0x00017dee     0x17ba build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+ .debug_info    0x000195a8     0x324a build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
+ .debug_info    0x0001c7f2       0xe3 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_info    0x0001c8d5       0xbd c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_info    0x0001c992       0xc5 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_info    0x0001ca57       0xd7 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_info    0x0001cb2e       0xb6 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
-.debug_abbrev   0x00000000     0x1fa0
+.debug_abbrev   0x00000000     0x1fc8
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x1d4 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
- .debug_abbrev  0x000001d4       0xab build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
- .debug_abbrev  0x0000027f      0x42f build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
- .debug_abbrev  0x000006ae      0x34f build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- .debug_abbrev  0x000009fd      0x36c build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
- .debug_abbrev  0x00000d69      0x26d build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
- .debug_abbrev  0x00000fd6      0x16d build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
- .debug_abbrev  0x00001143      0x1d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
- .debug_abbrev  0x00001313      0x219 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .debug_abbrev  0x0000152c      0x1d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .debug_abbrev  0x000016fc      0x1f8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .debug_abbrev  0x000018f4      0x138 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .debug_abbrev  0x00001a2c      0x2bd build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .debug_abbrev  0x00001ce9       0xc3 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .debug_abbrev  0x00001dac       0x91 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .debug_abbrev  0x00001e3d       0xc3 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_abbrev  0x00000000      0x1f8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .debug_abbrev  0x000001f8      0x138 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .debug_abbrev  0x00000330      0x2bd build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .debug_abbrev  0x000005ed       0xc3 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .debug_abbrev  0x000006b0       0x91 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .debug_abbrev  0x00000741       0xc3 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_abbrev  0x00000804      0x1d4 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .debug_abbrev  0x000009d8       0xab build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .debug_abbrev  0x00000a83      0x1d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .debug_abbrev  0x00000c53      0x42f build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+ .debug_abbrev  0x00001082      0x34f build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+ .debug_abbrev  0x000013d1      0x36c build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+ .debug_abbrev  0x0000173d      0x26d build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+ .debug_abbrev  0x000019aa      0x16d build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+ .debug_abbrev  0x00001b17      0x1d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+ .debug_abbrev  0x00001ce7      0x219 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
  .debug_abbrev  0x00001f00       0x28 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .debug_abbrev  0x00001f28       0x28 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .debug_abbrev  0x00001f50       0x28 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .debug_abbrev  0x00001f78       0x28 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_abbrev  0x00001fa0       0x28 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
-.debug_line     0x00000000     0x5508
+.debug_line     0x00000000     0x557e
  *(.debug_line)
- .debug_line    0x00000000      0x462 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
- .debug_line    0x00000462       0xfd build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
- .debug_line    0x0000055f     0x116e build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
- .debug_line    0x000016cd      0x711 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- .debug_line    0x00001dde      0x7ed build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
- .debug_line    0x000025cb      0x61f build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
- .debug_line    0x00002bea      0x471 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
- .debug_line    0x0000305b      0x38c build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
- .debug_line    0x000033e7      0x870 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .debug_line    0x00003c57      0x366 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .debug_line    0x00003fbd      0x37d build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .debug_line    0x0000433a      0x38b build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .debug_line    0x000046c5      0x62b build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .debug_line    0x00004cf0      0x1e7 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .debug_line    0x00004ed7      0x1e3 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .debug_line    0x000050ba      0x215 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
- .debug_line    0x000052cf       0x97 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_line    0x00005366       0x84 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_line    0x000053ea       0x88 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_line    0x00005472       0x96 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_line    0x00000000      0x37d build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .debug_line    0x0000037d      0x38b build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .debug_line    0x00000708      0x62b build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .debug_line    0x00000d33      0x1e7 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .debug_line    0x00000f1a      0x1e3 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .debug_line    0x000010fd      0x215 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_line    0x00001312      0x468 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .debug_line    0x0000177a       0xfd build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .debug_line    0x00001877      0x366 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .debug_line    0x00001bdd     0x116e build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+ .debug_line    0x00002d4b      0x711 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+ .debug_line    0x0000345c      0x7ed build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+ .debug_line    0x00003c49      0x61f build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+ .debug_line    0x00004268      0x471 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+ .debug_line    0x000046d9      0x38c build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+ .debug_line    0x00004a65      0x870 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
+ .debug_line    0x000052d5       0x97 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_line    0x0000536c       0x84 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_line    0x000053f0       0x88 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x00005478       0x96 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_line    0x0000550e       0x70 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
-.debug_frame    0x00000000      0x950
+.debug_frame    0x00000000      0x970
  *(.debug_frame)
- .debug_frame   0x00000000       0x8c build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
- .debug_frame   0x0000008c       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
- .debug_frame   0x000000b4      0x1d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
- .debug_frame   0x00000284       0x70 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- .debug_frame   0x000002f4       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
- .debug_frame   0x0000034c       0xe8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
- .debug_frame   0x00000434       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
- .debug_frame   0x0000045c       0x90 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
- .debug_frame   0x000004ec      0x1d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .debug_frame   0x000006bc       0xb0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .debug_frame   0x0000076c       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .debug_frame   0x000007c4       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .debug_frame   0x000007e4       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .debug_frame   0x0000080c       0x68 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .debug_frame   0x00000874       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .debug_frame   0x0000089c       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_frame   0x00000000       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .debug_frame   0x00000058       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .debug_frame   0x00000078       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .debug_frame   0x000000a0       0x68 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .debug_frame   0x00000108       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .debug_frame   0x00000130       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_frame   0x00000158       0x8c build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .debug_frame   0x000001e4       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .debug_frame   0x0000020c       0xb0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .debug_frame   0x000002bc      0x1d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+ .debug_frame   0x0000048c       0x70 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+ .debug_frame   0x000004fc       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+ .debug_frame   0x00000554       0xe8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+ .debug_frame   0x0000063c       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+ .debug_frame   0x00000664       0x90 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+ .debug_frame   0x000006f4      0x1d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
  .debug_frame   0x000008c4       0x2c c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .debug_frame   0x000008f0       0x20 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .debug_frame   0x00000910       0x20 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .debug_frame   0x00000930       0x20 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_frame   0x00000950       0x20 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
 .debug_str      0x00000000      0x3da
  *(.debug_str)
- .debug_str     0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
- .debug_str     0x00000000        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
- .debug_str     0x00000000      0x187 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
- .debug_str     0x00000187       0x74 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- .debug_str     0x000001fb       0x65 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
- .debug_str     0x00000260       0x16 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
- .debug_str     0x00000276        0x6 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
- .debug_str     0x0000027c       0x2d build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
- .debug_str     0x000002a9       0x98 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .debug_str     0x00000341       0x15 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .debug_str     0x00000356       0x39 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .debug_str     0x0000038f       0x15 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .debug_str     0x000003a4       0x36 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .debug_str     0x000003da        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .debug_str     0x000003da        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .debug_str     0x000003da        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_str     0x00000000       0x39 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .debug_str     0x00000039       0x15 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .debug_str     0x0000004e       0x36 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .debug_str     0x00000084        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .debug_str     0x00000084        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .debug_str     0x00000084        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_str     0x00000084        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .debug_str     0x00000084        0x0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .debug_str     0x00000084       0x15 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .debug_str     0x00000099      0x187 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+ .debug_str     0x00000220       0x74 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+ .debug_str     0x00000294       0x65 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+ .debug_str     0x000002f9       0x16 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+ .debug_str     0x0000030f        0x6 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+ .debug_str     0x00000315       0x2d build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+ .debug_str     0x00000342       0x98 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
  .debug_str     0x000003da        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .debug_str     0x000003da        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .debug_str     0x000003da        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .debug_str     0x000003da        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_str     0x000003da        0x0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
 .debug_loc      0x00000000     0x73cc
  *(.debug_loc)
- .debug_loc     0x00000000       0xcf build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
- .debug_loc     0x000000cf     0x492f build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
- .debug_loc     0x000049fe      0x71f build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- .debug_loc     0x0000511d      0xff2 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
- .debug_loc     0x0000610f       0xf0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
- .debug_loc     0x000061ff       0xe0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
- .debug_loc     0x000062df       0x8d build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
- .debug_loc     0x0000636c      0xee1 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .debug_loc     0x0000724d      0x13d build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .debug_loc     0x0000738a       0x21 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .debug_loc     0x000073ab       0x21 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .debug_loc     0x00000000       0x21 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .debug_loc     0x00000021       0x21 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .debug_loc     0x00000042       0xcf build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .debug_loc     0x00000111      0x13d build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .debug_loc     0x0000024e     0x492f build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+ .debug_loc     0x00004b7d      0x71f build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+ .debug_loc     0x0000529c      0xff2 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+ .debug_loc     0x0000628e       0xf0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+ .debug_loc     0x0000637e       0xe0 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+ .debug_loc     0x0000645e       0x8d build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+ .debug_loc     0x000064eb      0xee1 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1665,64 +1683,65 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000     0x11d8
+.debug_ranges   0x00000000     0x11e8
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
- .debug_ranges  0x00000028       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
- .debug_ranges  0x00000038      0xa98 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
- .debug_ranges  0x00000ad0       0x60 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
- .debug_ranges  0x00000b30      0x3d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
- .debug_ranges  0x00000f00       0x68 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
- .debug_ranges  0x00000f68       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
- .debug_ranges  0x00000f78       0x50 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
- .debug_ranges  0x00000fc8       0xe8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
- .debug_ranges  0x000010b0       0x70 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
- .debug_ranges  0x00001120       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
- .debug_ranges  0x00001148       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
- .debug_ranges  0x00001158       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
- .debug_ranges  0x00001168       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
- .debug_ranges  0x00001178       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
- .debug_ranges  0x00001188       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_ranges  0x00000000       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+ .debug_ranges  0x00000028       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+ .debug_ranges  0x00000038       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+ .debug_ranges  0x00000048       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+ .debug_ranges  0x00000058       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+ .debug_ranges  0x00000068       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+ .debug_ranges  0x00000078       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+ .debug_ranges  0x000000a0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+ .debug_ranges  0x000000b0       0x70 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+ .debug_ranges  0x00000120      0xa98 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+ .debug_ranges  0x00000bb8       0x60 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+ .debug_ranges  0x00000c18      0x3d0 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+ .debug_ranges  0x00000fe8       0x68 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+ .debug_ranges  0x00001050       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+ .debug_ranges  0x00001060       0x50 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+ .debug_ranges  0x000010b0       0xe8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
  .debug_ranges  0x00001198       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .debug_ranges  0x000011a8       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
  .debug_ranges  0x000011b8       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .debug_ranges  0x000011c8       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_ranges  0x000011d8       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 
 .gnu.attributes
                 0x00000000       0x10
  *(.gnu.attributes)
  .gnu.attributes
-                0x00000000       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+                0x00000000       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
  .gnu.attributes
-                0x00000010       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+                0x00000010       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
  .gnu.attributes
-                0x00000020       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x00000020       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
  .gnu.attributes
-                0x00000030       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+                0x00000030       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
  .gnu.attributes
-                0x00000040       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
+                0x00000040       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
  .gnu.attributes
-                0x00000050       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+                0x00000050       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
  .gnu.attributes
-                0x00000060       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+                0x00000060       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
  .gnu.attributes
-                0x00000070       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+                0x00000070       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
  .gnu.attributes
-                0x00000080       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
+                0x00000080       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
  .gnu.attributes
-                0x00000090       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+                0x00000090       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
  .gnu.attributes
-                0x000000a0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+                0x000000a0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
  .gnu.attributes
-                0x000000b0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+                0x000000b0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.o
  .gnu.attributes
-                0x000000c0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+                0x000000c0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
  .gnu.attributes
-                0x000000d0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+                0x000000d0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
  .gnu.attributes
-                0x000000e0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+                0x000000e0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
  .gnu.attributes
-                0x000000f0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+                0x000000f0       0x10 build/pic32mx795_pim_e16_int_dyn/production/_ext/1712139052/sys_ports.o
  .gnu.attributes
                 0x00000100       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
  .gnu.attributes
@@ -1731,6 +1750,8 @@ END GROUP
                 0x00000120       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
  .gnu.attributes
                 0x00000130       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .gnu.attributes
+                0x00000140       0x10 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
 LOAD c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3\libgcc.a
 START GROUP
 LOAD c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a
@@ -1751,13 +1772,14 @@ LOAD data_init
 .reginfo        0x00000000       0x18
  .reginfo       0x00000000       0x18 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX795F512L/crt0_mips32r2.o
 
-.stack          0xa0001930      0x400
- .stack         0xa0001930      0x400 stack
+.stack          0xa0001a10      0x400
+ .stack         0xa0001a10      0x400 stack
 
-.data           0xa000179c      0x178
- .data          0xa000179c      0x12c build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
-                0xa000179c                appMsg
- .data          0xa00018c8       0x4c build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+.data           0xa0001800      0x1f4
+ .data          0xa0001800      0x1a8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+                0xa0001800                appMsg
+                0xa0001990                preMsg
+ .data          0xa00019a8       0x4c build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
 
 ._debug_exception
                 0xbfc00480       0x2c
@@ -1772,284 +1794,288 @@ LOAD data_init
                 0x9d000000                _DRV_USART_HardwareSetup
 
 .text.APP_Tasks
-                0x9d000a78      0x488
+                0x9d000a78      0x4cc
  .text.APP_Tasks
-                0x9d000a78      0x488 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+                0x9d000a78      0x4cc build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
                 0x9d000a78                APP_Tasks
 
 .text.DRV_USART_BufferAddWrite
-                0x9d000f00      0x340
+                0x9d000f44      0x340
  .text.DRV_USART_BufferAddWrite
-                0x9d000f00      0x340 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
-                0x9d000f00                DRV_USART_BufferAddWrite
+                0x9d000f44      0x340 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+                0x9d000f44                DRV_USART_BufferAddWrite
 
 .text.DRV_USART_Initialize
-                0x9d001240      0x320
+                0x9d001284      0x320
  .text.DRV_USART_Initialize
-                0x9d001240      0x320 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d001240                DRV_USART_Initialize
+                0x9d001284      0x320 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d001284                DRV_USART_Initialize
 
 .text._DRV_USART_BufferQueueTxTasks
-                0x9d001560      0x274
+                0x9d0015a4      0x274
  .text._DRV_USART_BufferQueueTxTasks
-                0x9d001560      0x274 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d001560                _DRV_USART_BufferQueueTxTasks
+                0x9d0015a4      0x274 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d0015a4                _DRV_USART_BufferQueueTxTasks
 
 .text.DRV_USART_BufferAddRead
-                0x9d0017d4      0x274
+                0x9d001818      0x274
  .text.DRV_USART_BufferAddRead
-                0x9d0017d4      0x274 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
-                0x9d0017d4                DRV_USART_BufferAddRead
+                0x9d001818      0x274 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+                0x9d001818                DRV_USART_BufferAddRead
 
 .text._DRV_USART_BufferQueueRxTasks
-                0x9d001a48      0x25c
+                0x9d001a8c      0x25c
  .text._DRV_USART_BufferQueueRxTasks
-                0x9d001a48      0x25c build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d001a48                _DRV_USART_BufferQueueRxTasks
+                0x9d001a8c      0x25c build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d001a8c                _DRV_USART_BufferQueueRxTasks
+
+.dinit          0x9d001ce8      0x250
+ .dinit         0x9d001ce8      0x250 data_init
 
 .text._DRV_USART_ClientBufferQueueObjectsRemove
-                0x9d001ca4      0x218
+                0x9d001f38      0x218
  .text._DRV_USART_ClientBufferQueueObjectsRemove
-                0x9d001ca4      0x218 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d001ca4                _DRV_USART_ClientBufferQueueObjectsRemove
+                0x9d001f38      0x218 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d001f38                _DRV_USART_ClientBufferQueueObjectsRemove
 
 .text.DRV_USART_TasksError
-                0x9d001ebc      0x1f4
+                0x9d002150      0x1f4
  .text.DRV_USART_TasksError
-                0x9d001ebc      0x1f4 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d001ebc                DRV_USART_TasksError
+                0x9d002150      0x1f4 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d002150                DRV_USART_TasksError
 
-.dinit          0x9d0020b0      0x1d0
- .dinit         0x9d0020b0      0x1d0 data_init
-
-.text           0x9d002280      0x1a0
- .text          0x9d002280      0x1a0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(strcpy.o)
-                0x9d002280                strcpy
+.text           0x9d002344      0x1a0
+ .text          0x9d002344      0x1a0 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(strcpy.o)
+                0x9d002344                strcpy
 
 .text.DRV_USART_Deinitialize
-                0x9d002420      0x174
+                0x9d0024e4      0x174
  .text.DRV_USART_Deinitialize
-                0x9d002420      0x174 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d002420                DRV_USART_Deinitialize
+                0x9d0024e4      0x174 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d0024e4                DRV_USART_Deinitialize
 
-.text           0x9d002594      0x168
- .text          0x9d002594      0x168 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(strlen.o)
-                0x9d002594                strlen
+.text           0x9d002658      0x168
+ .text          0x9d002658      0x168 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(strlen.o)
+                0x9d002658                strlen
 
 .text._IntHandlerDrvUsartInstance0
-                0x9d0026fc      0x14c
+                0x9d0027c0      0x14c
  .text._IntHandlerDrvUsartInstance0
-                0x9d0026fc      0x14c build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
-                0x9d0026fc                _IntHandlerDrvUsartInstance0
+                0x9d0027c0      0x14c build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_interrupt.o
+                0x9d0027c0                _IntHandlerDrvUsartInstance0
 
 .text.DRV_USART_Open
-                0x9d002848      0x12c
+                0x9d00290c      0x12c
  .text.DRV_USART_Open
-                0x9d002848      0x12c build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d002848                DRV_USART_Open
+                0x9d00290c      0x12c build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d00290c                DRV_USART_Open
 
 .text.App_GetNextTaskState
-                0x9d002974      0x128
+                0x9d002a38      0x128
  .text.App_GetNextTaskState
-                0x9d002974      0x128 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
-                0x9d002974                App_GetNextTaskState
+                0x9d002a38      0x128 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+                0x9d002a38                App_GetNextTaskState
+
+.rodata         0x9d002b60       0xdc
+ .rodata        0x9d002b60       0xdc build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
 
 .text.SYS_DEVCON_PerformanceConfig
-                0x9d002a9c       0xdc
+                0x9d002c3c       0xdc
  .text.SYS_DEVCON_PerformanceConfig
-                0x9d002a9c       0xdc build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
-                0x9d002a9c                SYS_DEVCON_PerformanceConfig
-
-.rodata         0x9d002b78       0xdc
- .rodata        0x9d002b78       0xdc build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+                0x9d002c3c       0xdc build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon_pic32mx.o
+                0x9d002c3c                SYS_DEVCON_PerformanceConfig
 
 .text.general_exception
-                0x9d002c54       0xdc
+                0x9d002d18       0xdc
  .text.general_exception
-                0x9d002c54       0xdc c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
-                0x9d002c54                _general_exception_context
+                0x9d002d18       0xdc c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+                0x9d002d18                _general_exception_context
 
 .text.APP_BufferEventHandler
-                0x9d002d30       0xb8
+                0x9d002df4       0xb8
  .text.APP_BufferEventHandler
-                0x9d002d30       0xb8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
-                0x9d002d30                APP_BufferEventHandler
+                0x9d002df4       0xb8 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+                0x9d002df4                APP_BufferEventHandler
 
 .text.DRV_USART_TasksTransmit
-                0x9d002de8       0xb4
+                0x9d002eac       0xb4
  .text.DRV_USART_TasksTransmit
-                0x9d002de8       0xb4 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d002de8                DRV_USART_TasksTransmit
+                0x9d002eac       0xb4 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d002eac                DRV_USART_TasksTransmit
 
 .text.DRV_USART_TasksReceive
-                0x9d002e9c       0xb4
+                0x9d002f60       0xb4
  .text.DRV_USART_TasksReceive
-                0x9d002e9c       0xb4 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d002e9c                DRV_USART_TasksReceive
+                0x9d002f60       0xb4 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d002f60                DRV_USART_TasksReceive
 
 .text.SYS_Initialize
-                0x9d002f50       0xb0
+                0x9d003014       0xb0
  .text.SYS_Initialize
-                0x9d002f50       0xb0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
-                0x9d002f50                SYS_Initialize
+                0x9d003014       0xb0 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+                0x9d003014                SYS_Initialize
 
 .text.SYS_PORTS_Initialize
-                0x9d003000       0x68
+                0x9d0030c4       0x68
  .text.SYS_PORTS_Initialize
-                0x9d003000       0x68 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
-                0x9d003000                SYS_PORTS_Initialize
+                0x9d0030c4       0x68 build/pic32mx795_pim_e16_int_dyn/production/_ext/633097401/sys_ports_static.o
+                0x9d0030c4                SYS_PORTS_Initialize
 
 .text.DRV_USART_Close
-                0x9d003068       0x60
+                0x9d00312c       0x60
  .text.DRV_USART_Close
-                0x9d003068       0x60 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d003068                DRV_USART_Close
-
-.text.SYS_DEVCON_SystemUnlock
-                0x9d0030c8       0x58
- .text.SYS_DEVCON_SystemUnlock
-                0x9d0030c8       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
-                0x9d0030c8                SYS_DEVCON_SystemUnlock
-
-.text.SYS_INT_SourceDisable
-                0x9d003120       0x58
- .text.SYS_INT_SourceDisable
-                0x9d003120       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
-                0x9d003120                SYS_INT_SourceDisable
+                0x9d00312c       0x60 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d00312c                DRV_USART_Close
 
 .text.SYS_CLK_Initialize
-                0x9d003178       0x58
+                0x9d00318c       0x58
  .text.SYS_CLK_Initialize
-                0x9d003178       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
-                0x9d003178                SYS_CLK_Initialize
+                0x9d00318c       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+                0x9d00318c                SYS_CLK_Initialize
+
+.text.SYS_DEVCON_SystemUnlock
+                0x9d0031e4       0x58
+ .text.SYS_DEVCON_SystemUnlock
+                0x9d0031e4       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+                0x9d0031e4                SYS_DEVCON_SystemUnlock
+
+.text.SYS_INT_SourceDisable
+                0x9d00323c       0x58
+ .text.SYS_INT_SourceDisable
+                0x9d00323c       0x58 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+                0x9d00323c                SYS_INT_SourceDisable
 
 .text.main_entry
-                0x9d0031d0       0x54
+                0x9d003294       0x54
  .text.main_entry
-                0x9d0031d0       0x54 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX795F512L/crt0_mips32r2.o
-                0x9d003204                __crt0_exit
+                0x9d003294       0x54 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib/./proc/32MX795F512L/crt0_mips32r2.o
+                0x9d0032c8                __crt0_exit
 
 .text.BSP_Initialize
-                0x9d003224       0x50
+                0x9d0032e8       0x50
  .text.BSP_Initialize
-                0x9d003224       0x50 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
-                0x9d003224                BSP_Initialize
+                0x9d0032e8       0x50 build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+                0x9d0032e8                BSP_Initialize
 
-.rodata         0x9d003274       0x4c
- .rodata        0x9d003274       0x4c build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
-                0x9d003274                drvUsart0InitData
-                0x9d0032bc                sysDevconInit
+.rodata         0x9d003338       0x4c
+ .rodata        0x9d003338       0x4c build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_init.o
+                0x9d003338                drvUsart0InitData
+                0x9d003380                sysDevconInit
 
 .text.SYS_DEVCON_SystemLock
-                0x9d0032c0       0x48
+                0x9d003384       0x48
  .text.SYS_DEVCON_SystemLock
-                0x9d0032c0       0x48 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
-                0x9d0032c0                SYS_DEVCON_SystemLock
+                0x9d003384       0x48 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+                0x9d003384                SYS_DEVCON_SystemLock
 
 .text._bootstrap_exception_handler
-                0x9d003308       0x48
+                0x9d0033cc       0x48
  .text._bootstrap_exception_handler
-                0x9d003308       0x48 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
-                0x9d003308                _bootstrap_exception_handler
+                0x9d0033cc       0x48 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+                0x9d0033cc                _bootstrap_exception_handler
 
 .vector_default
-                0x9d003350       0x48
+                0x9d003414       0x48
  .vector_default
-                0x9d003350       0x48 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
-                0x9d003350                _DefaultInterrupt
+                0x9d003414       0x48 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+                0x9d003414                _DefaultInterrupt
 
-.text           0x9d003398       0x44
- .text          0x9d003398       0x44 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
-                0x9d003398                __pic32_software_reset
+.text           0x9d00345c       0x44
+ .text          0x9d00345c       0x44 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\pic32_software_reset.o
+                0x9d00345c                __pic32_software_reset
 
-.text.APP_Initialize
-                0x9d0033dc       0x40
- .text.APP_Initialize
-                0x9d0033dc       0x40 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
-                0x9d0033dc                APP_Initialize
+.text.strcat    0x9d0034a0       0x44
+ .text.strcat   0x9d0034a0       0x44 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libc.a(strcat.o)
+                0x9d0034a0                strcat
 
 .text._general_exception_handler
-                0x9d00341c       0x40
+                0x9d0034e4       0x40
  .text._general_exception_handler
-                0x9d00341c       0x40 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
-                0x9d00341c                _general_exception_handler
+                0x9d0034e4       0x40 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o
+                0x9d0034e4                _general_exception_handler
+
+.text.APP_Initialize
+                0x9d003524       0x40
+ .text.APP_Initialize
+                0x9d003524       0x40 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/app.o
+                0x9d003524                APP_Initialize
 
 .text.DRV_USART_BufferEventHandlerSet
-                0x9d00345c       0x2c
+                0x9d003564       0x2c
  .text.DRV_USART_BufferEventHandlerSet
-                0x9d00345c       0x2c build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
-                0x9d00345c                DRV_USART_BufferEventHandlerSet
+                0x9d003564       0x2c build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_buffer_queue.o
+                0x9d003564                DRV_USART_BufferEventHandlerSet
 
 .text.DRV_USART_ClientStatus
-                0x9d003488       0x28
+                0x9d003590       0x28
  .text.DRV_USART_ClientStatus
-                0x9d003488       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d003488                DRV_USART_ClientStatus
+                0x9d003590       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d003590                DRV_USART_ClientStatus
 
 .text._DRV_USART_DriverHandleValidate
-                0x9d0034b0       0x28
+                0x9d0035b8       0x28
  .text._DRV_USART_DriverHandleValidate
-                0x9d0034b0       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
-                0x9d0034b0                _DRV_USART_DriverHandleValidate
+                0x9d0035b8       0x28 build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart.o
+                0x9d0035b8                _DRV_USART_DriverHandleValidate
 
 .text.SYS_Tasks
-                0x9d0034d8       0x24
+                0x9d0035e0       0x24
  .text.SYS_Tasks
-                0x9d0034d8       0x24 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
-                0x9d0034d8                SYS_Tasks
+                0x9d0035e0       0x24 build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_tasks.o
+                0x9d0035e0                SYS_Tasks
 
-.text.main      0x9d0034fc       0x20
- .text.main     0x9d0034fc       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
-                0x9d0034fc                main
-
-.text.SYS_DEVCON_JTAGDisable
-                0x9d00351c       0x1c
- .text.SYS_DEVCON_JTAGDisable
-                0x9d00351c       0x1c build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
-                0x9d00351c                SYS_DEVCON_JTAGDisable
+.text.main      0x9d003604       0x20
+ .text.main     0x9d003604       0x20 build/pic32mx795_pim_e16_int_dyn/production/_ext/1360937237/main.o
+                0x9d003604                main
 
 .text.BSP_LEDOn
-                0x9d003538       0x1c
+                0x9d003624       0x1c
  .text.BSP_LEDOn
-                0x9d003538       0x1c build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
-                0x9d003538                BSP_LEDOn
+                0x9d003624       0x1c build/pic32mx795_pim_e16_int_dyn/production/_ext/2044032767/bsp_sys_init.o
+                0x9d003624                BSP_LEDOn
+
+.text.SYS_DEVCON_JTAGDisable
+                0x9d003640       0x1c
+ .text.SYS_DEVCON_JTAGDisable
+                0x9d003640       0x1c build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+                0x9d003640                SYS_DEVCON_JTAGDisable
 
 .text.SYS_INT_Initialize
-                0x9d003554       0x18
+                0x9d00365c       0x18
  .text.SYS_INT_Initialize
-                0x9d003554       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
-                0x9d003554                SYS_INT_Initialize
+                0x9d00365c       0x18 build/pic32mx795_pim_e16_int_dyn/production/_ext/2010745487/sys_int_pic32.o
+                0x9d00365c                SYS_INT_Initialize
 
-.text           0x9d00356c       0x18
- .text          0x9d00356c       0x18 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
-                0x9d00356c                _nmi_handler
+.text           0x9d003674       0x18
+ .text          0x9d003674       0x18 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+                0x9d003674                _nmi_handler
 
 .text.SYS_DEVCON_Initialize
-                0x9d003584       0x14
+                0x9d00368c       0x14
  .text.SYS_DEVCON_Initialize
-                0x9d003584       0x14 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
-                0x9d003584                SYS_DEVCON_Initialize
+                0x9d00368c       0x14 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+                0x9d00368c                SYS_DEVCON_Initialize
 
 .text.SYS_CLK_SystemFrequencyGet
-                0x9d003598        0xc
+                0x9d0036a0        0xc
  .text.SYS_CLK_SystemFrequencyGet
-                0x9d003598        0xc build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
-                0x9d003598                SYS_CLK_SystemFrequencyGet
+                0x9d0036a0        0xc build/pic32mx795_pim_e16_int_dyn/production/_ext/1252289623/sys_clk_static.o
+                0x9d0036a0                SYS_CLK_SystemFrequencyGet
 
 .text.SYS_DEVCON_Tasks
-                0x9d0035a4        0x8
+                0x9d0036ac        0x8
  .text.SYS_DEVCON_Tasks
-                0x9d0035a4        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
-                0x9d0035a4                SYS_DEVCON_Tasks
+                0x9d0036ac        0x8 build/pic32mx795_pim_e16_int_dyn/production/_ext/2131388757/sys_devcon.o
+                0x9d0036ac                SYS_DEVCON_Tasks
 
 .text._on_reset
-                0x9d0035ac        0x8
+                0x9d0036b4        0x8
  .text._on_reset
-                0x9d0035ac        0x8 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
-                0x9d0035ac                _on_reset
+                0x9d0036b4        0x8 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                0x9d0036b4                _on_reset
 
 .text._on_bootstrap
-                0x9d0035b4        0x8
+                0x9d0036bc        0x8
  .text._on_bootstrap
-                0x9d0035b4        0x8 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
-                0x9d0035b4                _on_bootstrap
+                0x9d0036bc        0x8 c:/program files (x86)/microchip/xc32/v1.40/bin/bin/../../lib/gcc/pic32mx/4.8.3/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x9d0036bc                _on_bootstrap

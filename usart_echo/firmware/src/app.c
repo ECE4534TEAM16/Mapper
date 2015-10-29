@@ -57,6 +57,9 @@ char appMsg[APP_NUM_LINES][APP_BUFFER_SIZE] = {
         {"\n"},
         {"\r\n\r\n****** End of USART Driver Demo Application. *****"},};
 
+char preMsg[] = "\r\nCharacter Entered = ";
+char temp[APP_BUFFER_SIZE];
+
 /* User Application Data Structure */
 APP_DATA appData;
 
@@ -329,6 +332,13 @@ void APP_Tasks( void )
 
             if ( appData.usartStatus == DRV_USART_CLIENT_STATUS_READY )
             {
+                strcpy(temp, preMsg);
+                strcat( temp, appData.buffer );
+                strcpy(appData.buffer, temp);
+                
+                /* Update Buffer Size */
+                appData.bufferSize = min(APP_BUFFER_SIZE,
+                                                       strlen(appData.buffer));
                 /* Submit buffer to USART */
                 DRV_USART_BufferAddWrite( appData.usartHandle,
                                           &(appData.usartBufferHandle),
