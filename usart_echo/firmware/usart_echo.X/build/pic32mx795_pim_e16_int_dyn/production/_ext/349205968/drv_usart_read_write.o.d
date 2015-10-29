@@ -189,5 +189,17 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/349205968/drv_usart_read_write.
  ../../../../../microchip/harmony/v1_06/framework/driver/usart/src/drv_usart_variant_mapping.h  \
  ../../../../../microchip/harmony/v1_06/framework/osal/osal.h  \
  ../../../../../microchip/harmony/v1_06/framework/osal/osal_definitions.h  \
- ../../../../../microchip/harmony/v1_06/framework/osal/src/osal_impl_basic.h  \
+ ../../../../../microchip/harmony/v1_06/framework/osal/src/osal_freertos.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/FreeRTOS.h  \
+ ../src/system_config/pic32mx795_pim_e16_int_dyn/FreeRTOSConfig.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/projdefs.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/portable.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/deprecated_definitions.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/portmacro.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/mpu_wrappers.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/queue.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/semphr.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/queue.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/task.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/list.h  \
  ../../../../../microchip/harmony/v1_06/framework/system/debug/sys_debug.h 

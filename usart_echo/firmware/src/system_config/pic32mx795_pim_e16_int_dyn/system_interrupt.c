@@ -70,7 +70,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 // Section: System Interrupt Vector Functions
 // *****************************************************************************
 // *****************************************************************************
-void __ISR(_UART_1_VECTOR, ipl3AUTO) _IntHandlerDrvUsartInstance0(void)
+
+void IntHandlerDrvUsartInstance0(void)
 {
     DRV_USART_TasksTransmit(sysObj.drvUsart0);
     DRV_USART_TasksReceive(sysObj.drvUsart0);

@@ -190,6 +190,15 @@ build/pic32mx795_pim_e16_int_dyn/production/_ext/1856320864/system_exceptions.o:
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/processor/../templates/dma_ChannelXCellProgressPointer_Default.h  \
  ../../../../../microchip/harmony/v1_06/framework/peripheral/dma/processor/../templates/dma_ChannelXPatternData_Default.h  \
  ../../../../../microchip/harmony/v1_06/framework/system/ports/sys_ports.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/FreeRTOS.h  \
+ ../src/system_config/pic32mx795_pim_e16_int_dyn/FreeRTOSConfig.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/projdefs.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/portable.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/deprecated_definitions.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX/portmacro.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/mpu_wrappers.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/task.h  \
+ ../../../../../microchip/harmony/v1_06/third_party/rtos/FreeRTOS/Source/include/list.h  \
  ../src/app.h  \
  ../src/system_config/pic32mx795_pim_e16_int_dyn/system_definitions.h  \
  ../../../../../microchip/harmony/v1_06/framework/system/debug/sys_debug.h 
