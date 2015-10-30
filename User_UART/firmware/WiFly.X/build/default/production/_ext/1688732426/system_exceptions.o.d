@@ -199,5 +199,9 @@ build/default/production/_ext/1688732426/system_exceptions.o:  \
  ../../../../third_party/rtos/FreeRTOS/Source/include/task.h  \
  ../../../../third_party/rtos/FreeRTOS/Source/include/list.h  \
 ../src/app.h  \
+ ../../../../third_party/rtos/FreeRTOS/Source/include/timers.h  \
+ ../../../../third_party/rtos/FreeRTOS/Source/include/task.h  \
+ ../src/messageQueue.h  \
+ ../../../../third_party/rtos/FreeRTOS/Source/include/queue.h  \
  ../src/system_config/default/system_definitions.h  \
  ../../../../framework/system/debug/sys_debug.h 

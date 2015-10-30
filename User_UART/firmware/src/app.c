@@ -9,7 +9,7 @@
 
   Description:
     This file contains the USART driver needed to make the User Rover function.
-    The main purpose of the User USART driver is to recieve single character 
+    The main purpose of the User USART driver is to recEIve single character 
     instructions from the Raspberry Pi.  This driver also contains a state to send
     data so that error messages may be sent to the Pi
  *
@@ -31,7 +31,11 @@
 /* USART Driver Demo Banner Message */
 
 char preMsg[] = "\r\n User Rover Connected";
-char temp[APP_BUFFER_SIZE];
+
+#ifdef APP_TEST
+    char temp[INSTRUCTION_BUFFER_SIZE];
+    char test[INSTRUCTION_BUFFER_SIZE];
+#endif
 
 /* User Application Data Structure */
 APP_DATA appData;
@@ -76,8 +80,89 @@ void APP_Initialize( void )
     appData.usrBufferEventComplete = false;
     /* Clear Application Buffer */
     strcpy(appData.buffer, "");
+    /* Set the flag for Queue fill*/
+    appData.queued            = false;
+    /* Set the initialized flag to false*/
+    appData.initialized       = false;
+    /* Set the error flag to false*/
+    appData.error             = false;
+    /* set the error_sent flag to true*/
+    appData.error_sent        = true;
+    
+    MsgQueue_Error_Log = xQueueCreate(APP_MAX_ERROR_LOG, APP_ERROR_BUFFER_SIZE);
+    if(MsgQueue_Error_Log == 0)
+    {
+        //Big failure
+        //Need to set an LED on to alert us of this error as
+        //we wont be able to send the error code through UART without this
+        //Message Queue.
+        
+    }
+
+    MsgQueue_User_Directions = xQueueCreate(APP_BUFFER_SIZE, sizeof( char ));
+    if( MsgQueue_User_Directions == 0 )
+    {
+        //BAD
+        //fatal error
+    }
+    
 }
 
+//if error occurs before UART is opened the error will be fatal
+//otherwise the system will try to return to a functioning state
+void setError(char* error)
+{
+    xQueueSendToBack(MsgQueue_Error_Log, error, APP_NUMBER_OF_TICKS);
+    appData.error = true;
+    
+}
+
+//will take the instruction set and put it into a message queue
+//fills the user_instructions with the data from the Pi after the 
+//Pi has finished sending the entire instruction set
+void fillQueue()
+{
+    int count = 0;
+    appData.queued = true;
+    for(count; count <= strlen(appData.InstructionSet); count++)
+    {
+        xQueueSendToBack(MsgQueue_User_Directions, 
+                          (void *) &appData.InstructionSet[count], 
+                          APP_NUMBER_OF_TICKS);
+    }
+    
+    appData.currentState = APP_USR_MSG_WRITE;
+    
+}
+
+//copies the current buffer character to the instruction set array
+void AddInstr()
+{
+    if(APP_TEST)
+    {
+        if(temp[0] == NULL)  
+        strcpy(temp, appData.buffer);
+        else
+        {
+            strcat(temp, ",");
+            strcat(temp, appData.buffer); 
+        }
+    }
+    if(appData.InstructionSet[0] == NULL)  
+        strcpy(appData.InstructionSet, appData.buffer);
+    else
+    {
+        strcat(appData.InstructionSet, appData.buffer); 
+    }
+    if(appData.buffer[0] == 'E' && appData.queued == false)
+        fillQueue();
+    if(APP_ERROR_TESTING)
+    {
+        if(appData.buffer[0] == '1')
+            setError("Testing Error Message Queue");
+    }
+        
+}
 
 void APP_BufferEventHandler(DRV_USART_BUFFER_EVENT buffEvent,
                             DRV_USART_BUFFER_HANDLE hBufferEvent,
@@ -103,10 +188,16 @@ void APP_BufferEventHandler(DRV_USART_BUFFER_EVENT buffEvent,
 
         /* Buffer event has some error */
         case DRV_USART_BUFFER_EVENT_ERROR:
+        {
+            setError("Buffer Event Error");
+        }
             break;
 
         /* Buffer event has aborted */
         case DRV_USART_BUFFER_EVENT_ABORT:
+        {
+            setError("Buffer Event has Aborted");
+        }
             break;
     }
 }
@@ -121,6 +212,11 @@ void APP_BufferEventHandler(DRV_USART_BUFFER_EVENT buffEvent,
  */
 void APP_Tasks( void )
 {
+    if(appData.error && appData.error_sent)
+    {
+        appData.currentState = APP_ERROR;
+        appData.error_sent = false;
+    }
     /* Check the Application State*/
     switch ( appData.currentState )
     {
@@ -139,7 +235,7 @@ void APP_Tasks( void )
             }
             else
             {
-                appData.currentState = APP_ERROR;
+                appData.currentState = APP_ERROR; //fatal error
             }
         }
         break;
@@ -159,7 +255,7 @@ void APP_Tasks( void )
 
                 if ( appData.usartBufferHandle == DRV_HANDLE_INVALID )
                 {
-                    appData.currentState = APP_ERROR;
+                    setError("Invalid Driver Handle in DRV_READY");
                 }
                 else
                 {
@@ -179,6 +275,7 @@ void APP_Tasks( void )
             if(appData.drvBufferEventComplete)
             {
                 appData.drvBufferEventComplete = false;
+                appData.error_sent = true;
                 App_GetNextTaskState(appData.prevState);
             }
             else if(appData.usrBufferEventComplete)
@@ -205,7 +302,7 @@ void APP_Tasks( void )
 
                 if ( appData.usartBufferHandle == DRV_HANDLE_INVALID )
                 {
-                    appData.currentState = APP_ERROR;
+                    setError("Invalid Driver Handle in DRV_MSG_WRITE");
                 }
                 else
                 {
@@ -232,7 +329,7 @@ void APP_Tasks( void )
 
                 if ( appData.usartBufferHandle == DRV_HANDLE_INVALID )
                 {
-                    appData.currentState = APP_ERROR;
+                    setError("Invalid Driver Handle in USR_MSG_READ");
                 }
                 else
                 {
@@ -245,29 +342,33 @@ void APP_Tasks( void )
 
         case APP_USR_MSG_WRITE:
         {
+
             appData.usartStatus = DRV_USART_ClientStatus( appData.usartHandle );
 
             if ( appData.usartStatus == DRV_USART_CLIENT_STATUS_READY )
             {
-                strcpy(temp, "\r\nSuccessfully received: ");
-                strcat( temp, appData.buffer );
-                strcpy(appData.buffer, temp);
+                if(APP_TEST) //Tests the rover on receiving the instruction set
+                {
+                strcpy(test, "\r\n");
+                strcat(test, temp );
                 
                 appData.bufferSize = min(APP_BUFFER_SIZE,
-                                                       strlen(appData.buffer));
+                                                       strlen(test));
                 DRV_USART_BufferAddWrite( appData.usartHandle,
                                           &(appData.usartBufferHandle),
-                                          appData.buffer, appData.bufferSize);
-
+                                          test, appData.bufferSize);
+                }
                 if ( appData.usartBufferHandle == DRV_HANDLE_INVALID )
                 {
-                    appData.currentState = APP_ERROR;
+                    appData.prevState    = APP_USR_MSG_WRITE;
+                    setError("Invalid Driver Handle");
                 }
                 else
                 {
                     appData.prevState    = APP_USR_MSG_WRITE;
                     appData.currentState = APP_WAIT_FOR_DONE;
                 }
+                
             }
         }
         break;
@@ -278,15 +379,51 @@ void APP_Tasks( void )
             DRV_USART_Close( appData.usartHandle );
             /* Deinitialize the driver */
             DRV_USART_Deinitialize( sysObj.drvUsart0 );
-            /* The appliction comes here when the demo has completed
-             * successfully. Switch on LED D5. */
+            /* The appliction comes here when the rover has completed its path
+             * successfully. Need to implement in code. */
         }
         break;
 
         case APP_ERROR:
         {
-            /* The appliction comes here when the demo
-             * has failed. need to switch LED on to signal comm error.*/
+            char error_buffer[APP_BUFFER_SIZE];
+            char pre_error[APP_ERROR_BUFFER_SIZE];
+            if(uxQueueMessagesWaiting(MsgQueue_Error_Log) > 0 && appData.prevState != APP_DRV_OPEN)
+            {
+                //set the handler
+                DRV_USART_BufferEventHandlerSet(appData.usartHandle,
+                                           APP_BufferEventHandler, APP_DRV_CONTEXT);
+
+                appData.usartStatus = DRV_USART_ClientStatus( appData.usartHandle );
+
+                if ( appData.usartStatus == DRV_USART_CLIENT_STATUS_READY )
+                {
+                    if(xQueueReceive(MsgQueue_Error_Log, &pre_error, APP_NUMBER_OF_TICKS))
+                    {
+                        strcpy( error_buffer, "\r\n" );
+                        strcat( error_buffer, pre_error);
+                        appData.bufferSize = min(APP_BUFFER_SIZE,
+                                                               strlen(error_buffer));
+                        DRV_USART_BufferAddWrite( appData.usartHandle,
+                                                  &(appData.usartBufferHandle),
+                                                  error_buffer, appData.bufferSize);
+                    }
+                    if ( appData.usartBufferHandle == DRV_HANDLE_INVALID )
+                    {
+                        //set LED, this is fatal error
+                    }
+                    else
+                    {
+                        appData.prevState    = APP_ERROR;
+                        appData.currentState = APP_WAIT_FOR_DONE;
+                    }
+                }
+            }
+            else
+            {
+                //comm error(fatal), set LED
+                //state will stay in the error state
+            }
             
         }
         break;
@@ -313,24 +450,52 @@ void App_GetNextTaskState(uint32_t appState)
             break;
 
         case APP_DRV_MSG_WRITE:
-            /* Insert newline character, before accepting data from user */
             strcpy(appData.buffer, "\n");
             appData.bufferSize = APP_NO_OF_BYTES_TO_READ;
             /* Set the buffer event for user data */
             DRV_USART_BufferEventHandlerSet(appData.usartHandle,
                               APP_BufferEventHandler, APP_USR_CONTEXT);
             /* Set the next Demo App. State */
-            appData.currentState = APP_USR_MSG_READ;
-            
-        
+            appData.currentState = APP_USR_MSG_READ; 
+            appData.initialized = true; //safeguard in error handling
         break;
 
         case APP_USR_MSG_READ:
-            appData.currentState = APP_USR_MSG_WRITE;
+            AddInstr();
+            if(APP_TEST || appData.queued == true )
+                appData.currentState = APP_USR_MSG_WRITE;
             break;
 
         case APP_USR_MSG_WRITE:
-            appData.currentState = APP_USR_MSG_READ;
+            if(APP_TEST)
+                appData.currentState = APP_USR_MSG_READ;
+            else
+                appData.currentState = APP_USR_MSG_WRITE;
+            break;
+            
+        case APP_ERROR:
+            if(uxQueueMessagesWaiting(MsgQueue_Error_Log) > 0)
+            {
+                appData.currentState = APP_ERROR;
+            }
+            else //no errors left to be written
+            {
+                appData.error = false;
+                if(appData.initialized)
+                {
+                    DRV_USART_BufferEventHandlerSet(appData.usartHandle,
+                              APP_BufferEventHandler, APP_USR_CONTEXT);
+                    
+                    if(appData.queued)
+                        appData.currentState = APP_USR_MSG_WRITE;
+                    else
+                        appData.currentState = APP_USR_MSG_READ;
+                    
+                }
+                else
+                    appData.currentState = APP_DRV_MSG_WRITE;       
+            }
+            
             break;
 
     }

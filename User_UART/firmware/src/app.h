@@ -29,6 +29,10 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#include "FreeRTOS.h"
+#include "timers.h"
+#include <time.h>
+#include "messageQueue.h"
 #include "system_definitions.h"
 #include "system_config.h"
 #include "system/system.h"
@@ -48,9 +52,14 @@ extern "C" {
     extern SYS_MODULE_OBJ    usartModule;
 
 // Section: Application Configuration
-
+    #define APP_TEST                false 
+    #define APP_ERROR_TESTING       true
+    #define APP_MAX_ERROR_LOG       5
+    #define APP_NUMBER_OF_TICKS     5
     #define APP_NO_OF_BYTES_TO_READ 1          
     #define APP_BUFFER_SIZE         80
+    #define APP_ERROR_BUFFER_SIZE   75      //must be 5 less than APP_BUFFER_SIZE
+    #define INSTRUCTION_BUFFER_SIZE 160
     #define APP_UART_BAUDRATE       57600
     #define APP_USR_ESC_KEY         0x1B
     #define APP_USR_RETURN_KEY      0x0D
@@ -148,6 +157,16 @@ typedef struct
     bool usrBufferEventComplete;
     
     char minBuffer[80];
+    
+    char InstructionSet[INSTRUCTION_BUFFER_SIZE];
+    
+    bool queued;
+    
+    bool initialized;
+    
+    bool error;
+    
+    bool error_sent;
 
 } APP_DATA;
 
@@ -236,6 +255,9 @@ void APP_Tasks( void );
 
 
 void App_GetNextTaskState ( uint32_t appState );
+void fillQueue();
+void AddInstr();
+void setError(char* error);
 
 
 #endif /* _APP_H */
