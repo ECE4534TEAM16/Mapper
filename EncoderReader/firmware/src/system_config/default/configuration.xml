@@ -156,7 +156,7 @@
       <Template>
         <Name>system_config.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>5709CC6207162C6300A627868518CA4B</Checksum>
+        <Checksum>5795571923523CF061BB46CE9D220CA2</Checksum>
       </Template>
       <Template>
         <Name>rtos_hooks.c</Name>
@@ -166,7 +166,7 @@
       <Template>
         <Name>system_interrupt.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>9F4BEB461EE71244D7F8782102071F06</Checksum>
+        <Checksum>72EA075D41BE1AB19D72BA42EF85AF5D</Checksum>
       </Template>
       <Template>
         <Name>sys_ports_static.c</Name>
@@ -188,9 +188,14 @@
         <Checksum>ED4D1A9F1F724FD090C5B80FE404BE35</Checksum>
       </Template>
       <Template>
+        <Name>drv_tmr_static.c</Name>
+        <Path>Source Files/app/system_config/default/framework/driver/tmr/src</Path>
+        <Checksum>88CFC3DED7A3CFE262C507910A895730</Checksum>
+      </Template>
+      <Template>
         <Name>FreeRTOSConfig.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>FAEC38D518F23DB6F371F67025D0407B</Checksum>
+        <Checksum>A9E4627395B4DA8C226C666151B62EE6</Checksum>
       </Template>
       <Template>
         <Name>app.c</Name>
@@ -199,12 +204,12 @@
       <Template>
         <Name>system_init.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>587B0FCD3FC89A7BD8DA62C04CF7EC14</Checksum>
+        <Checksum>121D4251ECFA173D3DF59F4069C5E0FD</Checksum>
       </Template>
       <Template>
         <Name>system_interrupt_a.S</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>80642BE55D04F321E29597E8BE01C0DF</Checksum>
+        <Checksum>E0354381A1316996D7682F5B17684C01</Checksum>
       </Template>
       <Template>
         <Name>sys_clk_static.c</Name>
@@ -212,9 +217,14 @@
         <Checksum>A6E9E4C7092911C2F2016868A6A0527E</Checksum>
       </Template>
       <Template>
+        <Name>drv_tmr_static.h</Name>
+        <Path>Header Files/app/system_config/default/framework/driver/tmr</Path>
+        <Checksum>B9BBCD3BAFE7DE3D1D35D12D13379E76</Checksum>
+      </Template>
+      <Template>
         <Name>system_definitions.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>635D9887864305E4A18DCBB3D9BEC414</Checksum>
+        <Checksum>242A496BCD7B46033CF874B9861D7A01</Checksum>
       </Template>
     </Templates>
     <CompilerItems>

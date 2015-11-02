@@ -76,7 +76,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     Application strings and buffers are be defined outside this structure.
 */
 
-APP_DATA appData;
+//APP_DATA appData;
         
 // *****************************************************************************
 // *****************************************************************************
@@ -121,7 +121,7 @@ void APP_Initialize ( void )
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
     appData.interruptCount = 0;
-    
+
     PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
     PLIB_PORTS_PinClear (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
     
@@ -169,14 +169,16 @@ void APP_Tasks ( void )
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
-            char in;
-            if(xQueueReceive( xQueue1, &in, 5))
-                appData.interruptCount = appData.interruptCount + 1;
-            if(appData.interruptCount > 10)
-            {
-                PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
-                appData.interruptCount = 0;
-            }
+            //PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+    
+            //char in;
+            //if(xQueueReceive( xQueue1, &in, 5))
+            //    appData.interruptCount = appData.interruptCount + 1;
+            //if(appData.interruptCount > 1)
+            //{
+                //PLIB_PORTS_PinToggle(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+                //appData.interruptCount = 0;
+            //}
             //    PLIB_PORTS_PinToggle (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
             //if( uxQueueMessagesWaiting(xQueue1) )
             //{
