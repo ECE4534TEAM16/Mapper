@@ -190,7 +190,7 @@
       <Template>
         <Name>drv_tmr_static.c</Name>
         <Path>Source Files/app/system_config/default/framework/driver/tmr/src</Path>
-        <Checksum>88CFC3DED7A3CFE262C507910A895730</Checksum>
+        <Checksum>DF71F50CCF15CEDC8F57F7F60A8CD3D8</Checksum>
       </Template>
       <Template>
         <Name>FreeRTOSConfig.h</Name>

@@ -3,9 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Microchip/harmony/v1_06/apps/EncoderReader/firmware/src/system_config/default/system_tasks.c</file>
-            <file>file:/C:/Microchip/harmony/v1_06/apps/EncoderReader/firmware/src/app.c</file>
-            <file>file:/C:/Microchip/harmony/v1_06/apps/EncoderReader/firmware/src/system_config/default/system_interrupt.c</file>
+            <file>file:/C:/Microchip/harmony/v1_06/apps/Rover_TEST/EncoderReader/firmware/src/app.c</file>
         </group>
     </open-files>
 </project-private>

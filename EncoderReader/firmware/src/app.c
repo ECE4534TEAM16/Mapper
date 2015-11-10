@@ -123,7 +123,12 @@ void APP_Initialize ( void )
     appData.interruptCount = 0;
 
     PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
-    PLIB_PORTS_PinClear (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+    PLIB_PORTS_PinSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
+    
+    DRV_TMR0_Start();
+    DRV_TMR1_Start();
+    DRV_TMR2_Start();
+
     
     //TimerHandle_t _50MsTimer = xTimerCreate
     //( "50ms timer",
