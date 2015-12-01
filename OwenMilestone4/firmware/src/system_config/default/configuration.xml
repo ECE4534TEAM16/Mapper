@@ -111,6 +111,10 @@
         <Path>Header Files/framework/system</Path>
       </File>
       <File>
+        <Name>driver.h</Name>
+        <Path>Header Files/framework/driver</Path>
+      </File>
+      <File>
         <Name>croutine.c</Name>
         <Path>Source Files/FreeRTOS</Path>
       </File>
@@ -156,7 +160,12 @@
       <Template>
         <Name>system_config.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>274B3B2535B692D2C66F5FDBE4299974</Checksum>
+        <Checksum>00A587CD484F32E69C85B1A851EBC032</Checksum>
+      </Template>
+      <Template>
+        <Name>drv_spi_static.c</Name>
+        <Path>Source Files/app/system_config/default/framework/driver/spi/src</Path>
+        <Checksum>6637EB523E9180E55AC2CA355C16D02D</Checksum>
       </Template>
       <Template>
         <Name>rtos_hooks.c</Name>
@@ -166,7 +175,7 @@
       <Template>
         <Name>system_interrupt.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>E8F5004C29F40CAEAACFE9183F1FDEE3</Checksum>
+        <Checksum>3EC6286026433D9C16A4E3112D2B238D</Checksum>
       </Template>
       <Template>
         <Name>sys_ports_static.c</Name>
@@ -183,19 +192,34 @@
         <Path>Header Files/app</Path>
       </Template>
       <Template>
+        <Name>drv_oc_static.c</Name>
+        <Path>Source Files/app/system_config/default/framework/driver/oc/src</Path>
+        <Checksum>1DD257BD43830072F0EED725B983E72D</Checksum>
+      </Template>
+      <Template>
         <Name>system_tasks.c</Name>
         <Path>Source Files/app/system_config/default</Path>
         <Checksum>0845AFA23ECE842283ADD49BE0AAFD82</Checksum>
       </Template>
       <Template>
+        <Name>drv_spi_static.h</Name>
+        <Path>Header Files/app/system_config/default/framework/driver/spi</Path>
+        <Checksum>7FBADA6F631203224298F3B79346A413</Checksum>
+      </Template>
+      <Template>
         <Name>drv_tmr_static.c</Name>
         <Path>Source Files/app/system_config/default/framework/driver/tmr/src</Path>
-        <Checksum>0E595FD63F77BBD70D2FFADFFFC0B65B</Checksum>
+        <Checksum>ECADD52DFC6BF6E1084F90D4F8E9AFCA</Checksum>
+      </Template>
+      <Template>
+        <Name>drv_oc_static.h</Name>
+        <Path>Header Files/app/system_config/default/framework/driver/oc</Path>
+        <Checksum>30853D3035027DABD2A7C0A53DD06E62</Checksum>
       </Template>
       <Template>
         <Name>FreeRTOSConfig.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>BB4681FEA46D704980E9595B04600236</Checksum>
+        <Checksum>D0A47109AD48DFC4B7AA9E417066F952</Checksum>
       </Template>
       <Template>
         <Name>app.c</Name>
@@ -204,12 +228,12 @@
       <Template>
         <Name>system_init.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>A0BA373FAC6BD716C39586DE96C1CA0E</Checksum>
+        <Checksum>FE135B946AB817FF5941BA9F01C1AC96</Checksum>
       </Template>
       <Template>
         <Name>system_interrupt_a.S</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>6A5DCF93BABA748FC76554A2249FDDF5</Checksum>
+        <Checksum>1D8A69580C1B87F4AA974B5B6B77DCAD</Checksum>
       </Template>
       <Template>
         <Name>sys_clk_static.c</Name>
@@ -219,12 +243,12 @@
       <Template>
         <Name>drv_tmr_static.h</Name>
         <Path>Header Files/app/system_config/default/framework/driver/tmr</Path>
-        <Checksum>177FC65128845C63C95944989D7BF4D8</Checksum>
+        <Checksum>B9BBCD3BAFE7DE3D1D35D12D13379E76</Checksum>
       </Template>
       <Template>
         <Name>system_definitions.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>63C2EC9B213DDD5B80B146919E875F52</Checksum>
+        <Checksum>410EC75890BDF5640CC98F48AE778F44</Checksum>
       </Template>
     </Templates>
     <CompilerItems>

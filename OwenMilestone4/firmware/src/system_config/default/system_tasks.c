@@ -93,9 +93,6 @@ void SYS_Tasks ( void )
                 "APP Tasks",
                 1024, NULL, 1, NULL);
 
-    
-    // this code starts tasks for mapper control threads
-    
     /**************
      * Start RTOS * 
      **************/

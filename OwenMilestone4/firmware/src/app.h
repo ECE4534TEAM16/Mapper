@@ -63,6 +63,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "FreeRTOS.h"
 #include "task.h"
 
+#include "timers.h"
+#include <time.h>
+
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
 
@@ -208,7 +211,6 @@ void APP_Tasks( void );
 
 
 // Queue framework support
-QueueHandle_t MsgQueue_GlobalQueue;
 QueueHandle_t MsgQueue_MapEncoder_Interrupt;
 QueueHandle_t MsgQueue_MapSensor_Interrupt;
 QueueHandle_t MsgQueue_MapSensor_Thread;

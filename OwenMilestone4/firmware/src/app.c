@@ -108,10 +108,149 @@ void GPIOOutputStringDebug(char* s, int length)
     }
     vTaskDelay(25 / portTICK_PERIOD_MS);
     PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, (char)0);
-
-    
 }
 
+/*
+void readIR()
+{
+    uint8_t fakeIRData[] = {60,57,51,39,15,3,48,0};
+//    appData.IRData = fakeIRData[rand() % 8];
+//    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, appData.IRData);
+    
+    //interpretIR();
+}
+
+/*
+void interpretIR()
+{
+    //ASSUMPTION - Dark line = 0
+    switch(appData.IRData)
+    {
+        //NORMAL
+        case 51: //00110011
+        {
+            moveRobot(800,800);
+            break;
+        }
+        
+        //WOBBLES, Off left
+        case 57: //00111001
+        {
+            moveRobot(800,0);
+            break;
+        }
+        case 60: //00111100
+        {
+            moveRobot(800,0);
+            break;
+        }
+        
+        //WOBBLES, Off right
+        case 39: //00100111
+        {
+            moveRobot(0,800);
+            break;
+        }
+        case 15: //00001111
+        {
+            moveRobot(0,800);
+            break;
+        }
+        
+        //INTERSECTIONS, Left
+        case 3: 
+        {
+            moveRobot(0,0);
+            break;
+        }
+        //Right
+        case 48: 
+        {
+            moveRobot(0,0);
+            getFromMessageQueue();
+            break;
+        }
+        //Both
+        case 0: 
+        {
+            moveRobot(0,0);
+            getFromMessageQueue();
+            break;
+        }
+
+        default:
+        {
+            moveRobot(0,0);
+            getFromMessageQueue();
+            break;
+        }
+    }
+    
+    //debugOut(printf("interpretIR() - Case Read: %i", appData.IRData))
+}*/
+
+/*void getFromMessageQueue()
+{
+    char dir;
+    if(!xQueueReceive( MsgQueue_User_Directions, &dir, 5))
+    {
+        //BAD
+    }
+    
+    switch(dir)
+    {
+        case 'l':
+        {
+            hardLeft();
+        }
+        case 'r':
+        {
+            hardRight();
+        }
+        case 's':
+        {
+            hardStraight();
+        }
+    }
+}*/
+/*
+void hardLeft()
+{
+    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'L');
+}
+void hardRight()
+{
+    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'R');
+}
+void hardStraight()
+{
+    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'S');
+}
+
+void moveRobot(int leftSpeed, int rightSpeed)
+{
+    if(leftSpeed > 0)
+    {
+        PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_1);
+    }
+    else
+    {
+        PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_1);
+    }
+    
+    if(rightSpeed > 0)
+    {
+        PLIB_PORTS_PinClear(PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_14);
+    }
+    else
+    {
+        PLIB_PORTS_PinSet(PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_14);
+    }
+    
+    PLIB_OC_PulseWidth16BitSet(1,leftSpeed);
+    PLIB_OC_PulseWidth16BitSet(0,rightSpeed);
+}
+*/
 void InterpretDataThread()
 {
     uint8_t fakeIRData[] = {
@@ -276,13 +415,27 @@ void APP_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
     appData.state = APP_STATE_INIT;
-    appData.debugInterpretData = true;
-    appData.debugEncoders = false;
+    appData.debugInterpretData = false;
+    appData.debugEncoders = true;
     appData.debug = false;
     
+//    srand(time(NULL));
+    
     // these two timers run external interrupts
-    DRV_TMR0_Start();
     DRV_TMR1_Start();
+    DRV_TMR2_Start();
+
+    // this timer is used by the external interrupt?
+//    DRV_TMR0_Start();
+    
+    // these commands set up the PWM for the motors
+//    DRV_OC0_Start();
+//    DRV_OC1_Start();
+//    PLIB_TMR_Period16BitSet(1,1000);
+//    PLIB_OC_PulseWidth16BitSet(0,0);
+//    PLIB_OC_PulseWidth16BitSet(1,0);
+//    PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_14);
+//    PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_1);
     
     // these lines configure LEDs for operation
     PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
@@ -291,12 +444,13 @@ void APP_Initialize ( void )
     // this code declares my message queues, declared in the header
     MsgQueue_MapEncoder_Interrupt = xQueueCreate( 50, sizeof( StandardMessage ) );
     MsgQueue_MapSensor_Interrupt = xQueueCreate( 50, sizeof( StandardMessage ) );
-    //vTaskDelay(100 / portTICK_PERIOD_MS);
-    //MsgQueue_MapSensor_Thread = xQueueCreate( 50, sizeof( StandardMessage ) );
+    MsgQueue_MapSensor_Thread = xQueueCreate( 50, sizeof( StandardMessage ) );
     
     // this code declares some GPIO output pins as outputs for me
     PLIB_PORTS_DirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_E, 0xFF);
     PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'a');
+    
+//    moveRobot(500,500);
     
     // this code starts tasks for mapper control threads
     TaskHandle_t Handle_MapperControlThread;
@@ -328,6 +482,7 @@ void APP_Tasks ( void )
         /* Application's initial state. */
         case APP_STATE_INIT:
         {
+            //moveRobot(500,500);
             break;
         }
 
