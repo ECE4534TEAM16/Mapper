@@ -108,26 +108,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #define DRV_TMR_INTERRUPT_SOURCE_IDX2       INT_SOURCE_TIMER_3
  
  
-/*** SPI Driver Configuration ***/
-#define DRV_SPI_NUMBER_OF_MODULES		4
-/*** Driver Compilation and static configuration options. ***/
-/*** Select SPI compilation units.***/
-#define DRV_SPI_POLLED 				0
-#define DRV_SPI_ISR 				0
-#define DRV_SPI_MASTER 				0
-#define DRV_SPI_SLAVE 				0
-#define DRV_SPI_RM 				0
-#define DRV_SPI_EBM 				0
-#define DRV_SPI_8BIT 				0
-#define DRV_SPI_16BIT 				0
-#define DRV_SPI_32BIT 				0
-#define DRV_SPI_DMA 				0
-
-/*** SPI Driver Static Allocation Options ***/
-#define DRV_SPI_INSTANCES_NUMBER 		
-#define DRV_SPI_CLIENTS_NUMBER 			
-#define DRV_SPI_ELEMENTS_PER_QUEUE 		
-
 // *****************************************************************************
 // *****************************************************************************
 // Section: Middleware & Other Library Configuration

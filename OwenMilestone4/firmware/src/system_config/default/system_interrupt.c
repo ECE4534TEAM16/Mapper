@@ -74,7 +74,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 void IntHandlerDrvTmrInstance0(void)
 
 {
-    
+
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_2);
 
 }
@@ -83,8 +83,7 @@ IntHandlerDrvTmrInstance1(void)
 
 {
     StandardMessage msg;
-    msg.messageType = 'e';
-    msg.ucData[0] = 'r';
+    msg.data = 'R';
     xQueueSendFromISR(MsgQueue_MapEncoder_Interrupt, &msg, 0);
 
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_4);
@@ -94,9 +93,8 @@ IntHandlerDrvTmrInstance1(void)
 IntHandlerDrvTmrInstance2(void)
  
 {
-StandardMessage msg;
-    msg.messageType = 'e';
-    msg.ucData[0] = 'l';
+    StandardMessage msg;
+    msg.data = 'L';
     xQueueSendFromISR(MsgQueue_MapEncoder_Interrupt, &msg, 0);
 
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_3);
@@ -104,7 +102,6 @@ StandardMessage msg;
 }
  
 
- 
 /*******************************************************************************
  End of File
 */

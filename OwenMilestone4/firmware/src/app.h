@@ -209,16 +209,42 @@ void APP_Initialize ( void );
 
 void APP_Tasks( void );
 
+void GPIOOutputStringDebug(char* s, int length);
+void moveRobot(int leftSpeed, int rightSpeed);
+void readIR();
+void TurnRight();
+void TurnLeft();
+void MoveDistance(int d); // d is distance in cm
+void IDT_UpdateDistance(char* rightEncoderCount, char* leftEncoderCount);
+void IDT_CorrectDirection(char c);
+bool IDT_CheckForIntersection(char c);
+void IDT_MapIntersection(char* leftPath, char* rightPath, char* forwardPath);
+void IDT_SendToMapperThread(char rightEncoderCount, char leftEncoderCount, char leftPath, char rightPath, char forwardPath);
+void IDT_RecAndExInstruction();
+void InterpretDataThread();
+void MapperControlThread();
+
+TimerHandle_t irTimer;
 
 // Queue framework support
 QueueHandle_t MsgQueue_MapEncoder_Interrupt;
 QueueHandle_t MsgQueue_MapSensor_Interrupt;
 QueueHandle_t MsgQueue_MapSensor_Thread;
+QueueHandle_t MsgQueue_MapAlgorithm_Instructions;
+
 typedef struct
 {
-    char messageType;
-    char ucData[ 10 ];
+    char data;
 } StandardMessage;
+
+typedef struct
+{
+    char distFromLastIntersection;  // 8-bit int value (only integers are expected)
+    char leftPathExists;            // 0, 1
+    char forwardPathExists;         // 0, 1
+    char rightPathExists;           // 0, 1
+    char absoluteDirection;         // N, W, E, S
+} EventData;
 
 #endif /* _APP_H */
 

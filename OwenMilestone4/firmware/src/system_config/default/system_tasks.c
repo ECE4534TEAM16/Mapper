@@ -138,7 +138,7 @@ static void _APP_Tasks(void)
     while(1)
     {
         APP_Tasks();
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+//        vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
 

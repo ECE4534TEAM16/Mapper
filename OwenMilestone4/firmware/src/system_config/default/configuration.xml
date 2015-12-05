@@ -160,12 +160,7 @@
       <Template>
         <Name>system_config.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>00A587CD484F32E69C85B1A851EBC032</Checksum>
-      </Template>
-      <Template>
-        <Name>drv_spi_static.c</Name>
-        <Path>Source Files/app/system_config/default/framework/driver/spi/src</Path>
-        <Checksum>6637EB523E9180E55AC2CA355C16D02D</Checksum>
+        <Checksum>0ECF5B91792D95D2D6594748D4AFDE05</Checksum>
       </Template>
       <Template>
         <Name>rtos_hooks.c</Name>
@@ -202,11 +197,6 @@
         <Checksum>0845AFA23ECE842283ADD49BE0AAFD82</Checksum>
       </Template>
       <Template>
-        <Name>drv_spi_static.h</Name>
-        <Path>Header Files/app/system_config/default/framework/driver/spi</Path>
-        <Checksum>7FBADA6F631203224298F3B79346A413</Checksum>
-      </Template>
-      <Template>
         <Name>drv_tmr_static.c</Name>
         <Path>Source Files/app/system_config/default/framework/driver/tmr/src</Path>
         <Checksum>ECADD52DFC6BF6E1084F90D4F8E9AFCA</Checksum>
@@ -219,7 +209,7 @@
       <Template>
         <Name>FreeRTOSConfig.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>D0A47109AD48DFC4B7AA9E417066F952</Checksum>
+        <Checksum>515F1FD11C1B42508A5E5BC951158487</Checksum>
       </Template>
       <Template>
         <Name>app.c</Name>
@@ -228,7 +218,7 @@
       <Template>
         <Name>system_init.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>FE135B946AB817FF5941BA9F01C1AC96</Checksum>
+        <Checksum>41BF975526CF317A50FED1CDEB2593A1</Checksum>
       </Template>
       <Template>
         <Name>system_interrupt_a.S</Name>
@@ -248,7 +238,7 @@
       <Template>
         <Name>system_definitions.h</Name>
         <Path>Header Files/app/system_config/default</Path>
-        <Checksum>410EC75890BDF5640CC98F48AE778F44</Checksum>
+        <Checksum>17F22B075D2985FB17B8E35CB7814C3C</Checksum>
       </Template>
     </Templates>
     <CompilerItems>

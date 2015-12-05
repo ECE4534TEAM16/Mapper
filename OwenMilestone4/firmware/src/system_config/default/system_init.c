@@ -115,10 +115,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 //<editor-fold defaultstate="collapsed" desc="DRV_Timer Initialization Data">
 
 // </editor-fold>
-//<editor-fold defaultstate="collapsed" desc="DRV_SPI Initialization Data">
- 
- /*** SPI Driver Initialization Data ***/
-// </editor-fold>
 
 // *****************************************************************************
 // *****************************************************************************
@@ -192,8 +188,7 @@ void SYS_Initialize ( void* data )
     /*Initialize TMR2 */
     DRV_TMR2_Initialize();
  
-     DRV_SPI0_Initialize();
-
+ 
 
     /*Initialize OC0 */
     DRV_OC0_Initialize();

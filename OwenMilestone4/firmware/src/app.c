@@ -96,135 +96,24 @@ APP_DATA appData;
 /* TODO:  Add any necessary local functions.
 */
 
+void ClearAllQueues()
+{
+    xQueueReset(MsgQueue_MapEncoder_Interrupt);
+    xQueueReset(MsgQueue_MapSensor_Interrupt);
+    xQueueReset(MsgQueue_MapSensor_Thread);
+    xQueueReset(MsgQueue_MapAlgorithm_Instructions);
+}
+
 void GPIOOutputStringDebug(char* s, int length)
 {
-    if(!appData.debug)
-        return;
     int i = 0;
     while( i < length )
     {
         vTaskDelay(25 / portTICK_PERIOD_MS);
-        PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, s[i]);
+        PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, s[i]);
     }
     vTaskDelay(25 / portTICK_PERIOD_MS);
-    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, (char)0);
-}
-
-/*
-void readIR()
-{
-    uint8_t fakeIRData[] = {60,57,51,39,15,3,48,0};
-//    appData.IRData = fakeIRData[rand() % 8];
-//    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, appData.IRData);
-    
-    //interpretIR();
-}
-
-/*
-void interpretIR()
-{
-    //ASSUMPTION - Dark line = 0
-    switch(appData.IRData)
-    {
-        //NORMAL
-        case 51: //00110011
-        {
-            moveRobot(800,800);
-            break;
-        }
-        
-        //WOBBLES, Off left
-        case 57: //00111001
-        {
-            moveRobot(800,0);
-            break;
-        }
-        case 60: //00111100
-        {
-            moveRobot(800,0);
-            break;
-        }
-        
-        //WOBBLES, Off right
-        case 39: //00100111
-        {
-            moveRobot(0,800);
-            break;
-        }
-        case 15: //00001111
-        {
-            moveRobot(0,800);
-            break;
-        }
-        
-        //INTERSECTIONS, Left
-        case 3: 
-        {
-            moveRobot(0,0);
-            break;
-        }
-        //Right
-        case 48: 
-        {
-            moveRobot(0,0);
-            getFromMessageQueue();
-            break;
-        }
-        //Both
-        case 0: 
-        {
-            moveRobot(0,0);
-            getFromMessageQueue();
-            break;
-        }
-
-        default:
-        {
-            moveRobot(0,0);
-            getFromMessageQueue();
-            break;
-        }
-    }
-    
-    //debugOut(printf("interpretIR() - Case Read: %i", appData.IRData))
-}*/
-
-/*void getFromMessageQueue()
-{
-    char dir;
-    if(!xQueueReceive( MsgQueue_User_Directions, &dir, 5))
-    {
-        //BAD
-    }
-    
-    switch(dir)
-    {
-        case 'l':
-        {
-            hardLeft();
-        }
-        case 'r':
-        {
-            hardRight();
-        }
-        case 's':
-        {
-            hardStraight();
-        }
-    }
-}*/
-/*
-void hardLeft()
-{
-    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'L');
-}
-void hardRight()
-{
-    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'R');
-}
-void hardStraight()
-{
-    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'S');
+    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, (char)0);
 }
 
 void moveRobot(int leftSpeed, int rightSpeed)
@@ -250,150 +139,293 @@ void moveRobot(int leftSpeed, int rightSpeed)
     PLIB_OC_PulseWidth16BitSet(1,leftSpeed);
     PLIB_OC_PulseWidth16BitSet(0,rightSpeed);
 }
-*/
+
+void readIR()
+{
+    PLIB_PORTS_DirectionInputSet(PORTS_ID_0, PORT_CHANNEL_E, 0xFF);
+
+    const TickType_t waitDecay = 4 / portTICK_PERIOD_MS;
+    vTaskDelay(waitDecay);
+    
+    char IRData = PLIB_PORTS_Read(PORTS_ID_0, PORT_CHANNEL_E);
+    IRData = IRData & 0x3F;
+    
+    PLIB_PORTS_DirectionOutputSet(PORTS_ID_0, PORT_CHANNEL_E, 0xFF);
+    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 0xFF);
+    
+    StandardMessage msg;
+    msg.data = IRData;
+    if( xQueueSendFromISR( MsgQueue_MapSensor_Interrupt, &msg, 100) );
+    
+    //    uint8_t fakeIRData[] = {60,57,51,39,15,3,48,0};
+    //    appData.IRData = fakeIRData[rand() % 8];
+}
+
+void TurnRight()
+{
+    char rightEncoderCount = 0;
+    char leftEncoderCount = 0;
+
+    xQueueReset(MsgQueue_MapEncoder_Interrupt);
+    moveRobot(800, 800);
+    while(rightEncoderCount < 12 && leftEncoderCount < 12)
+    {
+        IDT_UpdateDistance(&rightEncoderCount, &leftEncoderCount);
+        
+    }
+    rightEncoderCount = 0;
+    xQueueReset(MsgQueue_MapEncoder_Interrupt);
+    moveRobot(-800,800);
+    while(rightEncoderCount < 8)
+        IDT_UpdateDistance(&rightEncoderCount, &leftEncoderCount);
+    moveRobot(0,0);
+}
+
+void TurnLeft()
+{
+    char rightEncoderCount = 0;
+    char leftEncoderCount = 0;
+
+    xQueueReset(MsgQueue_MapEncoder_Interrupt);
+    moveRobot(800, 800);
+    while(rightEncoderCount < 12 && leftEncoderCount < 12)
+        IDT_UpdateDistance(&rightEncoderCount, &leftEncoderCount);
+
+    rightEncoderCount = 0;
+    xQueueReset(MsgQueue_MapEncoder_Interrupt);
+    moveRobot(-800,800);
+    while(leftEncoderCount < 8)
+        IDT_UpdateDistance(&rightEncoderCount, &leftEncoderCount);
+    moveRobot(0,0);
+}
+
+void MoveDistance(int d) // d is distance in cm
+{
+    xQueueReset(MsgQueue_MapEncoder_Interrupt);
+    moveRobot(800, 800);
+    if(d < 0)
+    {
+        moveRobot(-800, -800);
+        d = -1*d;
+    }
+    char rightEncoderCount = 0;
+    char leftEncoderCount = 0;
+    while( rightEncoderCount < d && leftEncoderCount < d )
+    {
+        IDT_UpdateDistance(&rightEncoderCount, &leftEncoderCount);
+    }
+    moveRobot(0,0);
+}
+
+void IDT_UpdateDistance(char* rightEncoderCount, char* leftEncoderCount)
+{
+    StandardMessage messageFromMapEncoderInterrupt;
+    if( xQueueReceive( MsgQueue_MapEncoder_Interrupt, &messageFromMapEncoderInterrupt, 0) )
+    {
+        if(messageFromMapEncoderInterrupt.data == 'L') // left encoder moves 1 cm
+        {
+            *leftEncoderCount += 1;
+        }
+        else if(messageFromMapEncoderInterrupt.data == 'R') // right encoder moves 1 cm
+        {
+            *rightEncoderCount += 1;
+        }
+    }
+    /*
+    if(appData.debugEncoders)
+        {
+            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, 'l');
+            vTaskDelay(25 / portTICK_PERIOD_MS);
+            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, (char)*leftEncoderCount);
+            vTaskDelay(25 / portTICK_PERIOD_MS);            
+            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, 'r');
+            vTaskDelay(25 / portTICK_PERIOD_MS);            
+            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, (char)*rightEncoderCount);
+            vTaskDelay(25 / portTICK_PERIOD_MS);
+            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, (char)0);
+            vTaskDelay(25 / portTICK_PERIOD_MS);
+        }
+   */
+}
+
+void IDT_CorrectDirection(char c)
+{
+    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, c);
+    switch(c)
+    {
+        //NORMAL
+        case 12: //00110011
+        {
+            moveRobot(600,600);
+            break;
+        }
+        
+        //WOBBLES
+        //Off left
+        case 8: //00111001
+        {
+            moveRobot(600,0);
+            break;
+        }
+        case 40: //00111100
+        {
+            moveRobot(600,0);
+            break;
+        }
+        case 32: //00111001
+        {
+            moveRobot(600,0);
+            break;
+        }
+        case 48: //00111100
+        {
+            moveRobot(600,0);
+            break;
+        }
+        case 16: //00111001
+        {
+            moveRobot(600,0);
+            break;
+        }
+        
+        //Off right
+        case 2: //00100111
+        {
+            moveRobot(0,600);
+            break;
+        }
+        case 6: //00001111
+        {
+            moveRobot(0,600);
+            break;
+        }
+        case 4: //00001111
+        {
+            moveRobot(0,600);
+            break;
+        }
+        case 3: //00001111
+        {
+            moveRobot(0,600);
+            break;
+        }
+        case 1: //00001111
+        {
+            moveRobot(0,600);
+            break;
+        }
+        xQueueReset(MsgQueue_MapSensor_Interrupt);
+    }
+    
+}
+
+bool IDT_CheckForIntersection(char c)
+{
+    bool intersection = ( c == 47 || c == 15 || c == 62 || c == 60 || c == 63 ); //L, R, both
+    if(intersection)
+        moveRobot(0, 0);
+    return intersection; 
+}
+
+void IDT_MapIntersection(char* leftPath, char* rightPath, char* forwardPath)
+{
+    *leftPath = 1;
+    *rightPath = 1;
+    *forwardPath = 1;
+}
+
+void IDT_SendToMapperThread(char rightEncoderCount, char leftEncoderCount, char leftPath, char rightPath, char forwardPath)
+{
+    EventData intersectionInformation;
+    intersectionInformation.distFromLastIntersection = (rightEncoderCount < leftEncoderCount) ? rightEncoderCount : leftEncoderCount;
+    intersectionInformation.forwardPathExists = forwardPath;
+    intersectionInformation.rightPathExists = rightPath;
+    intersectionInformation.leftPathExists = leftPath;
+    intersectionInformation.absoluteDirection = '0';
+    xQueueSend( MsgQueue_MapSensor_Thread, &intersectionInformation, 100);
+}
+
+void IDT_RecAndExInstruction()
+{
+    StandardMessage instruction;
+    if( xQueueReceive( MsgQueue_MapAlgorithm_Instructions, &instruction, 0) )
+    {
+        PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, instruction.data);
+        switch(instruction.data)
+        {
+            case 'r':
+                TurnRight();
+                break;
+            case 'l':
+                TurnLeft();
+                break;
+            case 'f':
+                MoveDistance(4);
+                break;
+        }
+    }
+    ClearAllQueues();
+}
+
 void InterpretDataThread()
 {
-    uint8_t fakeIRData[] = {
-        51, 51, 51, 39, 15, 39, 51, 51, 51, 51, 51,
-        51, 51, 51, 57, 60, 57, 51, 51, 51, 51, 51,
-        0
-
-        //60, 00 111100 drifting far right
-        //57, 00 111001 drifting right
-        //51, 00 110011 on course
-        //39, 00 100111 drifting left
-        //15, 00 001111 drifting far left
-        //3,  00 000011 left turn
-        //48, 00 110000 right turn
-        //0,  00 000000 intersection both sides
-    };
-    //write these values to a message cue
-    int i = 0;
+    //60, 00 111100 drifting far right
+    //57, 00 111001 drifting right
+    //51, 00 110011 on course
+    //39, 00 100111 drifting left
+    //15, 00 001111 drifting far left
+    //3,  00 000011 left turn
+    //48, 00 110000 right turn
+    //0,  00 000000 intersection both sides
     
-    char lastValue = 51;
+    char rightEncoderCount = 0; //SinceLastIntersection
+    char leftEncoderCount = 0; //SinceLastIntersection
+    char leftPath = 0, rightPath = 0, forwardPath = 0;
+    
+    //moveRobot(800, 800);
+    
     while(true)
-    {  
-        //read from IR message queue;
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
-        char nextValue = fakeIRData[ i % (sizeof(fakeIRData)/sizeof(uint8_t))];
-        i++;
-        
-        if(appData.debugInterpretData)
+    {
+        IDT_UpdateDistance(&rightEncoderCount, &leftEncoderCount);
+        //read distance from the Encoders;
+    
+        StandardMessage messageFromMapSensorInterrupt;
+        if( xQueueReceive( MsgQueue_MapSensor_Interrupt, &messageFromMapSensorInterrupt, 0) )
         {
-            if(nextValue == lastValue)
-                PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 0);
-            else
-                PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, (uint8_t)nextValue);
+            //PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, messageFromMapSensorInterrupt.data);
+            IDT_CorrectDirection(messageFromMapSensorInterrupt.data);
+            if( IDT_CheckForIntersection(messageFromMapSensorInterrupt.data) )
+            {
+                IDT_MapIntersection(&leftPath, &rightPath, &forwardPath);
+                IDT_SendToMapperThread(rightEncoderCount, leftEncoderCount, leftPath, rightPath, forwardPath);
+                IDT_RecAndExInstruction();
+            }
         }
         
-        if(nextValue == lastValue)
-        {
-            continue;
-        }
-        else
-        {
-            lastValue = nextValue;
-            
-            StandardMessage msg;
-            msg.messageType = 'i';
-            msg.ucData[0] = (uint8_t)nextValue;
-            xQueueSend(MsgQueue_MapEncoder_Interrupt, &msg, 25);
-        }
-        
-        //PLIB_PORTS_PinToggle (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
-        //vTaskDelay(4000 / portTICK_PERIOD_MS);
+        //deals w/ finding intersections and getting notifications.
     }
+    
 }
 
 void MapperControlThread()
 { 
-    short leftEncoderCount = 0;
-    short rightEncoderCount = 0;
-    
     while(true)
     {
-        StandardMessage messageFromMapEncoderInterrupt;
-        if( xQueueReceive( MsgQueue_MapEncoder_Interrupt, &messageFromMapEncoderInterrupt, 100) )
+        //PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, 'c');
+        EventData messageFromIDT;
+        if( xQueueReceive( MsgQueue_MapSensor_Thread, &messageFromIDT, 0) )
         {
-            if(messageFromMapEncoderInterrupt.messageType == 'i')
-            {
-                /*
-                switch ( messageFromMapEncoderInterrupt.ucData[0] )
-                {
-                    case 60: // 00 111100 drifting far right
-                        GPIOOutputStringDebug("Correct left hard", 17); 
-                        
-                        //correct left hard
-                        break;
-                    case 57: // 00 111001 drifting right
-                        GPIOOutputStringDebug("Correct left", 12); 
-                        
-                        // correct left
-                        break;
-                    case 51: // 00 110011 on course
-                        GPIOOutputStringDebug("Go straight", 11); 
-                        
-                        // drive straight
-                        break;
-                    case 39: // 00 100111 drifting left
-                        GPIOOutputStringDebug("Correct right", 13); 
-                        
-                        // correct right
-                        break;
-                    case 15: // 00 001111 drifting far left 
-                        GPIOOutputStringDebug("Correct far right", 17); 
-                        
-                        // correct right hard
-                        break;
-                    // everything above this point should be sent directly to
-                    //  motor control as a movement command
-                        
-                    // everything below this point will cause the robot to start
-                    //  an intersection mapping subrouting
-                    case 3:  // 00 000011 left turn
-                        GPIOOutputStringDebug("Mapping an intersection", 23); 
-                        
-                        // map the intersection
-                        break;
-                    case 48: // 00 110000 right turn
-                        GPIOOutputStringDebug("Mapping an intersection", 23);
-                        
-                        // map the intersection
-                        break;
-                    case 0:   // 00 000000 intersection both sides
-                        GPIOOutputStringDebug("Mapping an intersection", 23);
-                        
-                        // map the intersection
-                        break;
-                }*/
-            }
+            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, messageFromIDT.distFromLastIntersection);
+        ///
+        // Austin Mapper code should go here.
+        ///
+
+            StandardMessage instruction;
+            instruction.data = 'R'; //Austin tells us which direction to go from here
+            xQueueSend(MsgQueue_MapAlgorithm_Instructions, &instruction, 0);
             
-            if(messageFromMapEncoderInterrupt.messageType == 'e')
-            {
-                if(messageFromMapEncoderInterrupt.ucData[0] == 'l') // left encoder moves 1 cm
-                {
-                    leftEncoderCount += 1;
-                }
-                else if(messageFromMapEncoderInterrupt.ucData[0] == 'r') // right encoder moves 1 cm
-                {
-                    rightEncoderCount += 1;
-                }
-            }
         }
-        
-        if(appData.debugEncoders)
-        {
-            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'l');
-            vTaskDelay(25 / portTICK_PERIOD_MS);
-            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, (char)leftEncoderCount);
-            vTaskDelay(25 / portTICK_PERIOD_MS);            
-            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'r');
-            vTaskDelay(25 / portTICK_PERIOD_MS);            
-            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, (char)rightEncoderCount);
-            vTaskDelay(25 / portTICK_PERIOD_MS);
-            PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, (char)0);
-            vTaskDelay(25 / portTICK_PERIOD_MS);
-        }
+
     }
 }
 
@@ -419,23 +451,24 @@ void APP_Initialize ( void )
     appData.debugEncoders = true;
     appData.debug = false;
     
-//    srand(time(NULL));
+    irTimer = xTimerCreate("IR Timer", 100/portTICK_PERIOD_MS,pdTRUE, (void*) 1, readIR);
+    xTimerStart(irTimer, 100);
     
     // these two timers run external interrupts
     DRV_TMR1_Start();
     DRV_TMR2_Start();
 
     // this timer is used by the external interrupt?
-//    DRV_TMR0_Start();
+    DRV_TMR0_Start();
     
     // these commands set up the PWM for the motors
-//    DRV_OC0_Start();
-//    DRV_OC1_Start();
-//    PLIB_TMR_Period16BitSet(1,1000);
-//    PLIB_OC_PulseWidth16BitSet(0,0);
-//    PLIB_OC_PulseWidth16BitSet(1,0);
-//    PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_14);
-//    PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_1);
+    DRV_OC0_Start();
+    DRV_OC1_Start();
+    PLIB_TMR_Period16BitSet(1,1000);
+    PLIB_OC_PulseWidth16BitSet(0,0);
+    PLIB_OC_PulseWidth16BitSet(1,0);
+    PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_C, PORTS_BIT_POS_14);
+    PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_G, PORTS_BIT_POS_1);
     
     // these lines configure LEDs for operation
     PLIB_PORTS_PinDirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3);
@@ -444,13 +477,17 @@ void APP_Initialize ( void )
     // this code declares my message queues, declared in the header
     MsgQueue_MapEncoder_Interrupt = xQueueCreate( 50, sizeof( StandardMessage ) );
     MsgQueue_MapSensor_Interrupt = xQueueCreate( 50, sizeof( StandardMessage ) );
-    MsgQueue_MapSensor_Thread = xQueueCreate( 50, sizeof( StandardMessage ) );
+    MsgQueue_MapAlgorithm_Instructions = xQueueCreate( 50, sizeof( StandardMessage ) );
+    MsgQueue_MapSensor_Thread = xQueueCreate( 50, sizeof( EventData ) );
     
     // this code declares some GPIO output pins as outputs for me
     PLIB_PORTS_DirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_E, 0xFF);
-    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_E, 'a');
     
-//    moveRobot(500,500);
+    PLIB_PORTS_DirectionOutputSet (PORTS_ID_0, PORT_CHANNEL_B, 0xFF);
+    PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, 'a');
+
+    //moveRobot(800, 800);
+    TurnRight();
     
     // this code starts tasks for mapper control threads
     TaskHandle_t Handle_MapperControlThread;
@@ -461,7 +498,7 @@ void APP_Initialize ( void )
     xTaskCreate((TaskFunction_t) InterpretDataThread, 
                 "InterpretDataThread", 
                 1024, NULL, 1, NULL);
-    vTaskStartScheduler();
+//    vTaskStartScheduler();
 
 }
 
