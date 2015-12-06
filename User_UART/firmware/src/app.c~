@@ -117,7 +117,23 @@ void setError(char* error)
     
 }
 
-
+//will take the instruction set and put it into a message queue
+//fills the user_instructions with the data from the Pi after the 
+//Pi has finished sending the entire instruction set
+void fillQueue()
+{
+    int count = 0;
+    appData.queued = true;
+    for(count; count <= strlen(appData.InstructionSet); count++)
+    {
+        xQueueSendToBack(MsgQueue_User_Directions, 
+                          (void *) &appData.InstructionSet[count], 
+                          APP_NUMBER_OF_TICKS);
+    }
+    
+    appData.currentState = APP_USR_MSG_WRITE;
+    
+}
 
 //copies the current buffer character to the instruction set array
 void AddInstr()

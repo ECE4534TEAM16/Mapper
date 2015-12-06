@@ -99,7 +99,7 @@ void APP_Initialize( void )
         
     }
 
-    MsgQueue_User_Directions = xQueueCreate(APP_BUFFER_SIZE, sizeof( char ));
+    MsgQueue_Mapper_Directions = xQueueCreate(APP_BUFFER_SIZE, sizeof( char ));
     if( MsgQueue_User_Directions == 0 )
     {
         //BAD
@@ -117,36 +117,6 @@ void setError(char* error)
     
 }
 
-
-
-//copies the current buffer character to the instruction set array
-void AddInstr()
-{
-    if(APP_TEST)
-    {
-        if(temp[0] == NULL)  
-        strcpy(temp, appData.buffer);
-        else
-        {
-            strcat(temp, ",");
-            strcat(temp, appData.buffer); 
-        }
-    }
-    if(appData.InstructionSet[0] == NULL)  
-        strcpy(appData.InstructionSet, appData.buffer);
-    else
-    {
-        strcat(appData.InstructionSet, appData.buffer); 
-    }
-    if(appData.buffer[0] == 'E' && appData.queued == false)
-        fillQueue();
-    if(APP_ERROR_TESTING)
-    {
-        if(appData.buffer[0] == '1')
-            setError("Testing Error Message Queue");
-    }
-        
-}
 
 void APP_BufferEventHandler(DRV_USART_BUFFER_EVENT buffEvent,
                             DRV_USART_BUFFER_HANDLE hBufferEvent,
@@ -451,9 +421,6 @@ void App_GetNextTaskState(uint32_t appState)
             break;
 
         case APP_USR_MSG_WRITE:
-            if(APP_TEST)
-                appData.currentState = APP_USR_MSG_READ;
-            else
                 appData.currentState = APP_USR_MSG_WRITE;
             break;
             
