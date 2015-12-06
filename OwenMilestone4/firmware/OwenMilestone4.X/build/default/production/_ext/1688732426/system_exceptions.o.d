@@ -130,6 +130,7 @@ build/default/production/_ext/1688732426/system_exceptions.o:  \
  ../../../../framework/peripheral/ports/processor/../templates/ports_ChannelChangeNoticeMethod_Unsupported.h  \
  ../../../../framework/peripheral/ports/processor/../templates/ports_ChangeNoticeEdgeControl_Unsupported.h  \
  ../../../../framework/peripheral/ports/processor/../templates/ports_ChangeNoticeEdgeStatus_Unsupported.h  \
+ ../src/system_config/default/framework/driver/oc/drv_oc_static.h  \
  ../../../../third_party/rtos/FreeRTOS/Source/include/FreeRTOS.h  \
  ../src/system_config/default/FreeRTOSConfig.h  \
  ../../../../third_party/rtos/FreeRTOS/Source/include/projdefs.h  \
@@ -142,4 +143,6 @@ build/default/production/_ext/1688732426/system_exceptions.o:  \
 ../src/app.h  \
  ../src/system_config/default/system_definitions.h  \
  ../../../../third_party/rtos/FreeRTOS/Source/include/queue.h  \
+ ../../../../third_party/rtos/FreeRTOS/Source/include/timers.h  \
+ ../../../../third_party/rtos/FreeRTOS/Source/include/task.h  \
  ../../../../framework/system/debug/sys_debug.h 

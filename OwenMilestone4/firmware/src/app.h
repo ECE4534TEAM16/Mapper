@@ -63,6 +63,9 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "FreeRTOS.h"
 #include "task.h"
 
+#include "timers.h"
+#include <time.h>
+
 // DOM-IGNORE-BEGIN
 #ifdef __cplusplus  // Provide C++ Compatibility
 
@@ -115,9 +118,14 @@ typedef struct
 {
     /* The application's current state */
     APP_STATES state;
-    bool debugInterpretData;
-    bool debugEncoders;
-    bool debug;
+    int InstructionNumber;
+    
+    int rightEncoderCount; //SinceLastIntersection
+    int leftEncoderCount; //SinceLastIntersection
+    char leftPath;
+    char rightPath; 
+    char forwardPath;
+    
 
     /* TODO: Define any additional data used by the application. */
 
@@ -204,19 +212,72 @@ void APP_Initialize ( void );
     This routine must be called from SYS_Tasks() routine.
  */
 
-void APP_Tasks( void );
-
-
-// Queue framework support
-QueueHandle_t MsgQueue_GlobalQueue;
-QueueHandle_t MsgQueue_MapEncoder_Interrupt;
-QueueHandle_t MsgQueue_MapSensor_Interrupt;
-QueueHandle_t MsgQueue_MapSensor_Thread;
 typedef struct
 {
-    char messageType;
-    char ucData[ 10 ];
+    char data;
 } StandardMessage;
+
+typedef struct
+{
+    char distFromLastIntersection;  // 8-bit int value (only integers are expected)
+    char leftPathExists;            // 0, 1
+    char forwardPathExists;         // 0, 1
+    char rightPathExists;           // 0, 1
+    char absoluteDirection;         // N, W, E, S
+} EventData;
+
+void APP_Tasks( void );
+
+void GPIOOutputStringDebug(char* s, int length);
+void moveRobot(int leftSpeed, int rightSpeed);
+void readIR();
+void TurnRight();
+void TurnLeft();
+void MoveDistance(int d, int speed); // d is distance in cm
+void IDT_UpdateDistance(char* rightEncoderCount, char* leftEncoderCount);
+void IDT_CorrectDirection(char c);
+void IDT_CheckOtherCases(char);
+bool IDT_CheckForIntersection(char c);
+void IDT_MapIntersection(char* leftPath, char* rightPath, char* forwardPath);
+void ExecuteTurn(char);
+EventData MakeATurn(EventData);
+
+TimerHandle_t irTimer;
+
+// Queue framework support
+QueueHandle_t MsgQueue_MapEncoder_Interrupt;
+QueueHandle_t MsgQueue_MapSensor_Interrupt;
+QueueHandle_t MsgQueue_MapAlgorithm_Instructions;
+
+
+//Austin's code
+#define MAX_NODES	50
+
+int xcoor;
+int ycoor;
+int Direction;  // Rover always starts going North
+int intersection;
+int nodeDistance;
+
+int Coordinate[MAX_NODES][MAX_NODES];
+int getCoor[MAX_NODES][MAX_NODES];
+int pointArray[MAX_NODES];
+int typeArray[MAX_NODES];
+int exploredArray[MAX_NODES];
+
+int currentDistance;
+
+void getDataIR();
+char directionToRover();
+void saveCoordinate();
+int getType(char, char, char);
+char new_DetermineDirection(char, char, char);
+void traversedAdjacentPath(char, char, char);
+char old_DetermineDirection(char, char, char);
+void getBearing();
+char approachIntersection(char, char, char, char);
+
+// end Austins Code
 
 #endif /* _APP_H */
 

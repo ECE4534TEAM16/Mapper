@@ -93,9 +93,6 @@ void SYS_Tasks ( void )
                 "APP Tasks",
                 1024, NULL, 1, NULL);
 
-    
-    // this code starts tasks for mapper control threads
-    
     /**************
      * Start RTOS * 
      **************/
@@ -141,7 +138,7 @@ static void _APP_Tasks(void)
     while(1)
     {
         APP_Tasks();
-        vTaskDelay(1000 / portTICK_PERIOD_MS);
+//        vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }
 

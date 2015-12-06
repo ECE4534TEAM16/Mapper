@@ -61,6 +61,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "system/ports/sys_ports.h"
 
 
+#include "driver/oc/drv_oc_static.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "app.h"
@@ -100,6 +101,7 @@ typedef struct
     SYS_MODULE_OBJ  sysDevcon;
     SYS_MODULE_OBJ  drvTmr0;
     SYS_MODULE_OBJ  drvTmr1;
+    SYS_MODULE_OBJ  drvTmr2;
 
 } SYSTEM_OBJECTS;
 
