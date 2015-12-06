@@ -86,6 +86,8 @@ IntHandlerDrvTmrInstance1(void)
     msg.data = 'R';
     xQueueSendFromISR(MsgQueue_MapEncoder_Interrupt, &msg, 0);
 
+    //PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, 'R');
+
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_4);
 
 }
@@ -96,7 +98,9 @@ IntHandlerDrvTmrInstance2(void)
     StandardMessage msg;
     msg.data = 'L';
     xQueueSendFromISR(MsgQueue_MapEncoder_Interrupt, &msg, 0);
-
+    
+    //PLIB_PORTS_Write(PORTS_ID_0, PORT_CHANNEL_B, 'L');
+    
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_3);
 
 }
