@@ -199,7 +199,7 @@
       <Template>
         <Name>drv_tmr_static.c</Name>
         <Path>Source Files/app/system_config/default/framework/driver/tmr/src</Path>
-        <Checksum>ECADD52DFC6BF6E1084F90D4F8E9AFCA</Checksum>
+        <Checksum>108738FCB67B0B224B5228D75F220490</Checksum>
       </Template>
       <Template>
         <Name>drv_oc_static.h</Name>
@@ -218,7 +218,7 @@
       <Template>
         <Name>system_init.c</Name>
         <Path>Source Files/app/system_config/default</Path>
-        <Checksum>41BF975526CF317A50FED1CDEB2593A1</Checksum>
+        <Checksum>64548D48D4BED6416C9D3AC03BCE790E</Checksum>
       </Template>
       <Template>
         <Name>system_interrupt_a.S</Name>
