@@ -249,36 +249,6 @@ QueueHandle_t MsgQueue_MapEncoder_Interrupt;
 QueueHandle_t MsgQueue_MapSensor_Interrupt;
 QueueHandle_t MsgQueue_MapAlgorithm_Instructions;
 
-
-//Austin's code
-#define MAX_NODES	50
-
-int xcoor;
-int ycoor;
-int Direction;  // Rover always starts going North
-int intersection;
-int nodeDistance;
-
-int Coordinate[MAX_NODES][MAX_NODES];
-int getCoor[MAX_NODES][MAX_NODES];
-int pointArray[MAX_NODES];
-int typeArray[MAX_NODES];
-int exploredArray[MAX_NODES];
-
-int currentDistance;
-
-void getDataIR();
-char directionToRover();
-void saveCoordinate();
-int getType(char, char, char);
-char new_DetermineDirection(char, char, char);
-void traversedAdjacentPath(char, char, char);
-char old_DetermineDirection(char, char, char);
-void getBearing();
-char approachIntersection(char, char, char, char);
-
-// end Austins Code
-
 #endif /* _APP_H */
 
 //DOM-IGNORE-BEGIN
